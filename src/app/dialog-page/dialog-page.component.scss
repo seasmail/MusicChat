@@ -1,0 +1,80 @@
+@import "../../styles.scss";
+
+.page {
+  width: $right-side-width;
+  background-color: $light-grey;
+}
+
+p {
+  color: white;
+}
+
+.additional-info {
+  color: $addit-light-orange;
+}
+
+.music-bar {
+  padding: 20px 20px 20px 0;
+  display: flex;
+}
+
+.music-nav {
+  display: flex;
+  float: left;
+}
+
+.title {
+  padding-left: 20px;
+}
+
+ul {
+  margin: 30px;
+  height: 65%;
+  li {
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid $dark-divider-color;
+  }
+
+  li.chat-message {
+    padding-left: 68px;
+  }
+}
+
+.event-message {
+  color: $msg-color;
+  text-align: center;
+}
+
+.form-group {
+  margin: 15px 30px;
+  display: flex;
+}
+
+input {
+  width: 90%;
+  height: 20px;
+  padding: 10px 10px 10px 55px;
+  border: none;
+}
+
+mat-icon {
+  font-size: 30px;
+  color: $accent-color;
+}
+
+.music-bar mat-icon {
+  color: white;
+}
+
+app-playlist-page {
+  //display: none;
+  position: absolute;
+}
+
+.playing-now {
+  width: 150px;
+  margin: auto auto 0 5px;
+  text-align: center;
+  font-size: 14px;
+}

@@ -1,0 +1,203 @@
+/* You can add global styles to this file, and also import other style files */
+$background-color: #222;
+$background-light-color: #EBEBEB;
+$light-grey: #F5F5F5;
+$left-side-width: 25vw;
+$right-side-width: 45vw;
+$accent-color: #FF5900;
+$msg-color: #464646;
+$light-orange: #FFA473;
+$addit-light-orange: #FFCDB2;
+$dark-divider-color: #D7D7D7;
+$addit-info-font-size: 12px;
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: 'Rubik', sans-serif;
+  color: $background-color;
+  background-color: $dark-divider-color;
+}
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+h1 {
+  color: $accent-color;
+  font-weight: bold;
+}
+.image {
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+.image-msg {
+  @extend .image;
+  position: absolute;
+  left: 10px;
+  display: inline-block;
+  top: 6px;
+  width: 40px;
+  height: 40px;
+}
+.page {
+  background: $background-light-color;
+  width: $left-side-width;
+  height: 100%;
+  //height: -moz-available;
+  //height: -webkit-fill-available;
+  //height: fill-available;
+}
+
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left !important;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.additional-info {
+  font-size: $addit-info-font-size;
+  color: $background-color;
+}
+
+.title {
+  width: 77%;
+  //padding-top: 28px;
+  text-align: center;
+  margin: auto;
+}
+%toolbar {
+  color: white;
+  display: flex;
+}
+
+.toolbar-black {
+  @extend %toolbar;
+  background-color: $background-color;
+  width: $left-side-width;
+  border-bottom: 1px solid black;
+}
+
+.toolbar-orange {
+  @extend %toolbar;
+  background-color: $accent-color;
+  width: $right-side-width;
+  border-bottom: 1px solid $light-orange;
+  height: 64px;
+}
+
+.wrap {
+  width: 83%;
+}
+
+.wrap-40 {
+  width: 40%;
+}
+
+.wrap-45 {
+  width: 45%;
+}
+
+.wrap-60 {
+  width: 60%;
+}
+
+.wrap-55 {
+  width: 55%;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.chat-message {
+  position: relative;
+  p {
+    color: $msg-color;
+    padding-top: 10px;
+  }
+
+  span {
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+
+.input-icon {
+  z-index: 1;
+  position: absolute;
+}
+
+.input-icon-left-bottom {
+  @extend .input-icon;
+}
+
+.rotated-icon {
+  margin: 4px 0 0 15px;
+  transform: rotate(45deg);
+}
+
+input {
+  border-radius: 3px;
+  border: none;
+}
+
+.mat-raised-button {
+  line-height: inherit;
+}

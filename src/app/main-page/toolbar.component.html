@@ -1,0 +1,16 @@
+<div class="page">
+  <mat-drawer-container>
+
+    <div class="toolbar-black">
+      <button mat-raised-button (click)="drawer.toggle()">
+        <mat-icon class="left">menu</mat-icon>
+      </button>
+
+      <p class="title">Chats</p>
+      <mat-icon class="right">add_box</mat-icon>
+    </div>
+    <mat-drawer #drawer [mode]="over" (click)="drawer.toggle()"><app-sidenav></app-sidenav></mat-drawer>
+    <app-dialog-list-page></app-dialog-list-page>
+  </mat-drawer-container>
+
+</div>

@@ -1,0 +1,27 @@
+@import "../styles.scss";
+
+app-toolbar {
+  width: $left-side-width;
+}
+app-dialog-page {
+  width: $right-side-width;
+}
+h1 {
+  color: $accent-color;
+  font-weight: bold;
+}
+
+.container {
+  //height: 100vh;
+  max-height: 900px;
+  min-height: 700px;
+  height: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.shadow {
+  box-shadow: 0px 1px 11px rgba(0,0,0,0.27);
+  overflow: -webkit-paged-x;
+}

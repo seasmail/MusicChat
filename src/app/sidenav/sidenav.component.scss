@@ -1,0 +1,35 @@
+@import "../../styles.scss";
+
+.about {
+  padding: 45px 30px;
+  background-color: $light-orange;
+  display: flex;
+  //border-bottom: 1px solid $light-orange;
+}
+
+ul {
+  padding: 20px 40px;
+}
+
+li {
+  padding-bottom: 10px;
+  display: flex;
+}
+
+h1 {
+  color: white;
+  padding: 5px;
+}
+
+p {
+  font-size: 14px;
+  padding-top: 3px;
+}
+
+mat-icon {
+  padding-right: 15px;
+}
+
+span {
+  margin: auto 0;
+}

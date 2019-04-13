@@ -1,0 +1,38 @@
+@import "../../styles.scss";
+
+.music-nav {
+  background-color: white;
+  color: $msg-color;
+  position: relative;
+  z-index: 1;
+  border: 1px solid $dark-divider-color;
+  top: 45px;
+}
+
+ul {
+  padding: 20px 15px;
+  height: 65%;
+  width: 254px;
+  li {
+    padding: 10px 10px 25px;
+    position: relative;
+  }
+}
+
+ul li:first-child :after {
+  content: '';
+  position: absolute;
+  left: 83%;
+  top: -31px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 11px solid white !important;
+}
+
+.active-song {
+  background-color: $light-grey;
+  border-radius: 3px;
+  color: $accent-color;
+}

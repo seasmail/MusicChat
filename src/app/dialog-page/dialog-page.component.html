@@ -1,0 +1,38 @@
+<div class="page">
+  <div class="toolbar-orange">
+    <div class="text-left title wrap-45">
+      <p>Chat name</p>
+      <div class="additional-info">num of members</div>
+    </div>
+    <div class="music-bar wrap-55 float-right text-right">
+      <div class="music-nav">
+        <mat-icon>skip_previous</mat-icon>
+        <mat-icon>pause</mat-icon>
+        <mat-icon class="hidden">play_arrow</mat-icon>
+        <mat-icon>skip_next</mat-icon>
+      </div>
+      <div class="playing-now">
+        Author-Song
+      </div>
+      <button mat-raised-button (click)="openPlaylist()">
+        <mat-icon>playlist_play</mat-icon>
+      </button>
+      <app-playlist-page *ngIf="isOpen" #playlist (click)="openPlaylist()"></app-playlist-page>
+    </div>
+  </div>
+  <ul class="list-msg">
+    <li class="event-message">Kate joined</li>
+    <li class="chat-message">
+      <div class="image-msg"></div><span>Author</span><p>Hi</p>
+    </li>
+  </ul>
+  <form class="message-form">
+    <div class="form-group">
+      <input type="text" placeholder="Write a message" autocomplete="off">
+      <mat-icon class="input-icon-left-bottom rotated-icon">attach_file</mat-icon>
+      <button>
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
