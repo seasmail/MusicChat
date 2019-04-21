@@ -1,0 +1,20 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()"
+      class="center login-area">
+  <mat-form-field>
+    <input matInput placeholder="Username" formControlName="username" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" formControlName="password" type="password" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Repeat a password" formControlName="confPassword" type="password" required>
+  </mat-form-field>
+</form>
+
+<div class="btns-area">
+  <button class="float-left" type="submit">SIGN UP</button>
+  <div>
+    <a routerLink="" class="float-left">Forgot your password?</a>
+    <a routerLink="../login" class="float-right accent">Already have an account</a>
+  </div>
+</div>

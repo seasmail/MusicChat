@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+
+h1 {
+  color: white;
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 30px;
+  border-bottom: 3px solid $accent-color;
+  padding-bottom: 10px;
+}
+
+.signup {
+  background-color: $background-color;
+  color: white;
+  width: $whole-width;
+}
+
+.active-area {
+  margin-top: 8%;
+  text-align: center;
+}
