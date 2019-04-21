@@ -13,12 +13,8 @@ import {DialogPageComponent} from './dialog-page/dialog-page.component';
 import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
 import {MatMenuModule} from '@angular/material';
 import { MainComponent } from './pages/main/main.component';
-import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
-import { AuthComponent } from './pages/auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { LoginFormComponent } from './auth/login-form/login-form.component';
-import {AuthModule} from './auth/auth.module';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
