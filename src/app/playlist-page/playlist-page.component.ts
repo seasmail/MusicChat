@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-playlist-page',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlist-page.component.scss']
 })
 export class PlaylistPageComponent implements OnInit {
+
+  @Input()
+  width: number;
 
   constructor() { }
 

@@ -16,6 +16,10 @@ li {
   display: flex;
 }
 
+li:hover {
+  color: $accent-color;
+}
+
 h1 {
   color: white;
   padding: 5px;

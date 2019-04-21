@@ -1,5 +1,9 @@
 @import "../../styles.scss";
 
+.area {
+  background-color: $background-light-color;
+  display: flow-root;
+}
 .search {
   margin: 0 auto;
   max-width: 300px;

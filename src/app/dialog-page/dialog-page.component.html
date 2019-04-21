@@ -4,20 +4,20 @@
       <p>Chat name</p>
       <div class="additional-info">num of members</div>
     </div>
-    <div class="music-bar wrap-55 float-right text-right">
+    <div #music_bar class="music-bar wrap-55 float-right text-right">
       <div class="music-nav">
         <mat-icon>skip_previous</mat-icon>
         <mat-icon>pause</mat-icon>
         <mat-icon class="hidden">play_arrow</mat-icon>
         <mat-icon>skip_next</mat-icon>
       </div>
-      <div class="playing-now">
+      <div class="playing-now" (click)="openPlaylist()">
         Author-Song
       </div>
-      <button mat-raised-button (click)="openPlaylist()">
+      <button  (click)="openPlaylist()">
         <mat-icon>playlist_play</mat-icon>
       </button>
-      <app-playlist-page *ngIf="isOpen" #playlist (click)="openPlaylist()"></app-playlist-page>
+      <app-playlist-page [width]="music_bar.offsetWidth" *ngIf="isOpen" #playlist (click)="openPlaylist()"></app-playlist-page>
     </div>
   </div>
   <ul class="list-msg">

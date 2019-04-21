@@ -4,6 +4,7 @@ $background-light-color: #EBEBEB;
 $light-grey: #F5F5F5;
 $left-side-width: 25vw;
 $right-side-width: 45vw;
+$whole-width: 70vw;
 $accent-color: #FF5900;
 $msg-color: #464646;
 $light-orange: #FFA473;
@@ -14,6 +15,8 @@ $addit-info-font-size: 12px;
    v2.0 | 20110126
    License: none (public domain)
 */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -53,6 +56,11 @@ ol, ul {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+a:active, a:hover, a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .left {
@@ -201,3 +209,25 @@ input {
 .mat-raised-button {
   line-height: inherit;
 }
+
+.height-100 {
+  height: 100%;
+}
+
+.shadow {
+  box-shadow: 0 1px 11px rgba(0,0,0,0.27);
+  overflow: -webkit-paged-x;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.center {
+  margin: auto;
+}
+
