@@ -1,10 +1,10 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+<form [formGroup]="loginForm" (keyup.enter)="onSubmit()"
       class="login-area center">
   <mat-form-field>
-    <input matInput placeholder="Username" formControlName="username">
+    <input matInput placeholder="Username" formControlName="username" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
+    <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'" required>
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
 </form>

@@ -7,8 +7,10 @@ import {AppModule} from '../app.module';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import {MatIconModule, MatInputModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthService} from '../services/auth.service';
+import {UserService} from '../services/user.service';
+import {JwtInterceptor} from '../_helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,9 @@ import {AuthService} from '../services/auth.service';
   ],
   providers: [
     AuthService,
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+
   ]
 })
 export class AuthModule { }

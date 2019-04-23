@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>New Chat</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Chat name" [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-icon class="input-icon-left-bottom">group</mat-icon>
+    <input matInput>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Create</button>
+</div>

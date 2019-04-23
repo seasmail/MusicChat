@@ -1,4 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from './services/auth.service';
+import {User} from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +10,11 @@ import {Component, ViewEncapsulation} from '@angular/core';
   // encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  title = 'MusicChat';
+  currentUser: User;
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {
+
+  }
 }

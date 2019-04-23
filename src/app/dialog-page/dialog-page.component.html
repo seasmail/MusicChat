@@ -1,8 +1,8 @@
 <div class="page">
   <div class="toolbar-orange">
     <div class="text-left title wrap-45">
-      <p>Chat name</p>
-      <div class="additional-info">num of members</div>
+      <p>{{chat.name}}</p>
+      <div class="additional-info">{{chat.participants.length}}</div>
     </div>
     <div #music_bar class="music-bar wrap-55 float-right text-right">
       <div class="music-nav">
@@ -17,7 +17,7 @@
       <button  (click)="openPlaylist()">
         <mat-icon>playlist_play</mat-icon>
       </button>
-      <app-playlist-page [width]="music_bar.offsetWidth" *ngIf="isOpen" #playlist (click)="openPlaylist()"></app-playlist-page>
+      <app-playlist-page [width]="music_bar.offsetWidth" *ngIf="isOpen" (click)="openPlaylist()"></app-playlist-page>
     </div>
   </div>
   <ul class="list-msg">
@@ -30,7 +30,7 @@
     <div class="form-group">
       <input type="text" placeholder="Write a message" autocomplete="off">
       <mat-icon class="input-icon-left-bottom rotated-icon">attach_file</mat-icon>
-      <button>
+      <button (click)="send()">
         <mat-icon>send</mat-icon>
       </button>
     </div>

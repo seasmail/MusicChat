@@ -13,10 +13,11 @@ export class ChatService {
               private router: Router) { }
 
   public getCurrentChats() {
-    return this.http.get(api);
+    return this.http.get(api).toPromise();
   }
 
   public createChat(chatName: string) {
+    console.log('on creating the chat');
     return this.http.post(api, chatName);
   }
 }

@@ -9,8 +9,9 @@
   </div>
   <ul>
     <li><mat-icon>group_add</mat-icon><span>New group</span></li>
-    <li><mat-icon>playlist_add</mat-icon><span>New playlist</span></li>
+    <!--<li><mat-icon>playlist_add</mat-icon><span>New playlist</span></li>-->
     <li><mat-icon>playlist_play</mat-icon><span><a routerLink="/playlist">Your playlist</a></span></li>
     <li><mat-icon>settings_applications</mat-icon><span>Settings</span></li>
+    <li (click)="logout()"><mat-icon>arrow_back</mat-icon><span>Log out</span></li>
   </ul>
 </nav>

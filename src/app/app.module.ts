@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSidenavModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSidenavModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -15,7 +15,12 @@ import {MatMenuModule} from '@angular/material';
 import { MainComponent } from './pages/main/main.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthService} from './services/auth.service';
+import {ChatService} from './services/chats.service';
+import {UserService} from './services/user.service';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
+import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,9 @@ import {HttpClientModule} from '@angular/common/http';
     DialogPageComponent,
     PlaylistPageComponent,
     MainComponent,
+    NewChatDialogComponent,
   ],
+  entryComponents: [NewChatDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -43,10 +50,15 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    ChatService,
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import {Chat} from './chat';
+
 export class User {
   id: number;
   username: string;
@@ -6,4 +8,5 @@ export class User {
   lastName: string;
   email: string;
   token?: string;
+  chats: Chat[];
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -10,22 +12,26 @@ import {AuthService} from '../../services/auth.service';
 export class LoginFormComponent implements OnInit {
 
   hide = true;
-  isLogin = true;
 
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
+  async onSubmit() {
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     console.log(this.loginForm.value);
-    console.warn('SUBMIT ON LOGIN FORM');
-    this.authService.login('USER', 'PSW').subscribe(data => console.log(data));
+    this.authService.login(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value);
   }
 
 }

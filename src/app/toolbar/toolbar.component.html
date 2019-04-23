@@ -7,7 +7,9 @@
       </button>
 
       <p class="title">Chats</p>
-      <mat-icon class="right">add_box</mat-icon>
+      <button (click)="createChat()">
+        <mat-icon class="right">add_box</mat-icon>
+      </button>
     </div>
     <mat-drawer #drawer [mode]="over" (click)="drawer.toggle()"><app-sidenav></app-sidenav></mat-drawer>
     <app-dialog-list-page></app-dialog-list-page>

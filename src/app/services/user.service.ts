@@ -17,11 +17,16 @@ export class UserService {
 
   constructor(private http: HttpClient,
               private router: Router) { }
+
   public getUserByName(username: string) {
     return this.http.get(api + username, httpOptions);
   }
 
   public updateUser(user: User) {
     return this.http.post(api + user.username, user, httpOptions);
+  }
+
+  public setSession(authResult): void {
+    localStorage.setItem('token', authResult.headers.get('Authorization'));
   }
 }

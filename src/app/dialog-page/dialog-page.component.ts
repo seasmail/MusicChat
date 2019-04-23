@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Chat} from '../models/chat';
 
 @Component({
   selector: 'app-dialog-page',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-page.component.scss']
 })
 export class DialogPageComponent implements OnInit {
+
+  @Input() chat: Chat;
+
   isOpen = false;
 
   constructor() { }
@@ -15,7 +19,10 @@ export class DialogPageComponent implements OnInit {
 
   openPlaylist() {
     this.isOpen = !this.isOpen;
-    // console.log('clicked' + this.isOpen);
+  }
+
+  public send() {
+    return;
   }
 
 }
