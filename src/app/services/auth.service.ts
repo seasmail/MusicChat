@@ -20,6 +20,7 @@ export class AuthService {
   public currentUser: Observable<string>;
   public currentUserSubject: BehaviorSubject<string>;
   public decoded;
+
   constructor(
     private http: HttpClient,
     private userService: UserService,
@@ -28,10 +29,13 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  public get currentUserValue(): string {
+    return this.currentUserSubject.value;
+  }
+
   public login(username: string, password: string) {
     return this.http.post<any>(api + 'login', {username, password}, httpOptions).subscribe((data: Response) => {
         console.log('data ' + JSON.stringify(data));
-        console.log(data.headers.get('Authorization'));
         this.decoded = jwt_decode(data.headers.get('Authorization'));
         console.log('decoded: ' + this.decoded);
         this.userService.setSession(data);

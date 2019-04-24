@@ -6,12 +6,15 @@ import {PlaylistPageComponent} from './playlist-page/playlist-page.component';
 import {MainComponent} from './pages/main/main.component';
 import {AuthComponent} from './pages/auth/auth.component';
 import {AuthModule} from './auth/auth.module';
+import {AuthGuard} from './_helpers/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/chat', pathMatch: 'full' },
-  { path: 'chat', component: MainComponent },
+  { path: '', redirectTo: '/auth', pathMatch: 'full'},
+  { path: 'chat', component: MainComponent, canActivate: [AuthGuard]  },
   { path: 'playlist', component: PlaylistPageComponent},
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
+
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
