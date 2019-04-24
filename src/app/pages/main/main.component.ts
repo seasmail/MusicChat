@@ -9,15 +9,15 @@ import {ChatService} from '../../services/chats.service';
   // styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  public chats: Chat[];
-  public chat: Chat = {id: 1, name: 'The first chat', participants: [], owner: null};
+
+  // public chat: Chat = {chatId: 1, chatName: 'The first chat', owner: null};
 
   constructor(
     private chatService: ChatService
   ) { }
 
   ngOnInit() {
-    this.chatService.getCurrentChats().then();
+    this.chatService.getCurrentChats();
   }
 
 }

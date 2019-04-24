@@ -7,10 +7,11 @@ import {MainComponent} from './pages/main/main.component';
 import {AuthComponent} from './pages/auth/auth.component';
 import {AuthModule} from './auth/auth.module';
 import {AuthGuard} from './_helpers/auth.guard';
+import {DialogPageComponent} from './dialog-page/dialog-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full'},
-  { path: 'chat', component: MainComponent, canActivate: [AuthGuard]  },
+  { path: 'chat', component: MainComponent, canActivate: [AuthGuard]},
   { path: 'playlist', component: PlaylistPageComponent},
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
 

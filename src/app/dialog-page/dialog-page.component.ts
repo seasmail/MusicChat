@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Chat} from '../models/chat';
+import {ChatService} from '../services/chats.service';
 
 @Component({
   selector: 'app-dialog-page',
@@ -9,10 +10,12 @@ import {Chat} from '../models/chat';
 export class DialogPageComponent implements OnInit {
 
   @Input() chat: Chat;
-
+  // chat: Chat;
   isOpen = false;
 
-  constructor() { }
+  constructor(
+    private chatService: ChatService
+  ) { }
 
   ngOnInit() {
   }
@@ -20,9 +23,4 @@ export class DialogPageComponent implements OnInit {
   openPlaylist() {
     this.isOpen = !this.isOpen;
   }
-
-  public send() {
-    return;
-  }
-
 }

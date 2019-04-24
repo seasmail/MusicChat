@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Chat} from '../models/chat';
 
 @Component({
   selector: 'app-dialog-card',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-card.component.scss']
 })
 export class DialogCardComponent implements OnInit {
+  @Input() chat: Chat;
 
   constructor() { }
 

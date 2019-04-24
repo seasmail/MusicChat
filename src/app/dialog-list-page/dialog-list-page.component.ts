@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
+import {ChatService} from '../services/chats.service';
+import {Chat} from '../models/chat';
 
 @Component({
   selector: 'app-dialog-list-page',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-list-page.component.scss']
 })
 export class DialogListPageComponent implements OnInit {
+  public chats: Chat[];
+  public selectedChat: Chat;
+  @Output () chat: Chat;
 
-  constructor() { }
+
+  constructor(
+    private chatService: ChatService) { }
 
   ngOnInit() {
+    this.getChats();
+  }
+  getChats(): void {
+    this.chatService.getCurrentChats()
+      .subscribe(res => {
+        this.chats = res['data'];
+      });
+  }
+
+  onSelect(chat: Chat) {
+    this.chatService.setSelectedChat(chat);
+    console.log(chat + ' ' + JSON.stringify(chat));
   }
 
 }

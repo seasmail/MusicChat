@@ -1,8 +1,8 @@
 import {User} from './user';
 
 export class Chat {
-  id: number;
-  name: string;
+  chatId: number;
+  chatName: string;
   owner: User;
-  participants: User[];
+  // participants: User[];
 }
