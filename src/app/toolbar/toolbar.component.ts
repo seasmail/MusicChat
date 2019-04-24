@@ -30,7 +30,5 @@ export class ToolbarComponent implements OnInit {
       this.chatService.createChat(result);
       this.chatName = result;
     });
-
-    console.log(this.chatService.getCurrentChats());
   }
 }
