@@ -15,12 +15,16 @@ const httpOptions = {
 export class ChatService {
   private selectedChat: BehaviorSubject<Chat>;
   public currentChat: Observable<Chat>;
+  private chats: BehaviorSubject<Chat[]>;
+  public currentChats: Observable<Chat[]>;
 
   constructor(private http: HttpClient,
               private router: Router) {
-    this.selectedChat = new BehaviorSubject<Chat>(this.getCurrentChats()['data']);
-    console.log('CHAR SERVICE FIRST CHAT ' + JSON.stringify(this.getCurrentChats()['data']));
+    this.selectedChat = new BehaviorSubject<Chat>(new Chat());
     this.currentChat = this.selectedChat.asObservable();
+    this.chats = new BehaviorSubject<Chat[]>(this.getCurrentChats()['data']);
+    this.currentChats = this.chats.asObservable();
+
   }
 
   public getCurrentChats(): Observable<Chat[]> {

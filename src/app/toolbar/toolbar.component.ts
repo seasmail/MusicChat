@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NewChatDialogComponent} from '../new-chat-dialog/new-chat-dialog.component';
 import {MatDialog} from '@angular/material';
 import {ChatService} from '../services/chats.service';
+import {Chat} from '../models/chat';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,12 +12,22 @@ import {ChatService} from '../services/chats.service';
 export class ToolbarComponent implements OnInit {
 
   public chatName: string;
+  public chats: Chat[];
 
   constructor(
     public dialog: MatDialog,
     private chatService: ChatService) { }
 
   ngOnInit() {
+    console.log('on init toolbar');
+    this.getChats();
+  }
+
+  getChats(): void {
+    this.chatService.getCurrentChats()
+      .subscribe(res => {
+        this.chats = res['data'];
+      });
   }
 
   createChat(): void {
@@ -27,7 +38,7 @@ export class ToolbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.chatService.createChat(result);
+      this.chatService.createChat(result).then(res => this.getChats());
       this.chatName = result;
     });
   }

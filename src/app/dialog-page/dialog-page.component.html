@@ -1,7 +1,7 @@
 <div class="page">
   <div class="toolbar-orange">
     <div class="text-left title wrap-45">
-      <p> {{currentChat.chatName}}</p>
+      <p *ngIf="currentChat"> {{currentChat.chatName}}</p>
       <div class="additional-info">0</div>
     </div>
     <div #music_bar class="music-bar wrap-55 float-right text-right">

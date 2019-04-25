@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ChatService} from '../services/chats.service';
 import {Chat} from '../models/chat';
 
@@ -8,28 +8,19 @@ import {Chat} from '../models/chat';
   styleUrls: ['./dialog-list-page.component.scss']
 })
 export class DialogListPageComponent implements OnInit {
-  public chats: Chat[];
-  public selectedChat: Chat;
-  @Output () chat = new EventEmitter<Chat>();
+  @Input() chats: Chat[];
 
 
   constructor(
     private chatService: ChatService) { }
 
   ngOnInit() {
-    this.getChats();
-  }
-  getChats(): void {
-    this.chatService.getCurrentChats()
-      .subscribe(res => {
-        this.chats = res['data'];
-      });
+    console.log('LIST ON INIT');
   }
 
   onSelect(chat: Chat) {
     this.chatService.changeChat(chat);
-    console.log(chat + ' ' + JSON.stringify(chat));
-    this.chat.emit(chat);
+    console.log('list ' + JSON.stringify(this.chats));
   }
 
 }

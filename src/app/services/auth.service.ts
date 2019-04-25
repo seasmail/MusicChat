@@ -39,7 +39,7 @@ export class AuthService {
         this.decoded = jwt_decode(data.headers.get('Authorization'));
         console.log('decoded: ' + this.decoded);
         this.userService.setSession(data);
-        this.router.navigateByUrl('/chat');
+        this.router.navigate(['/chat']);
       }
     );
   }
