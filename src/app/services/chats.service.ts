@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Chat} from '../models/chat';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 const api = 'http://playmaker.gq:8080/social/chats';
 const httpOptions = {
@@ -13,23 +13,23 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ChatService {
-  
-  private selectedChat: Chat;
+  private selectedChat: BehaviorSubject<Chat>;
+  public currentChat: Observable<Chat>;
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router) {
+    this.selectedChat = new BehaviorSubject<Chat>(this.getCurrentChats()['data']);
+    console.log('CHAR SERVICE FIRST CHAT ' + JSON.stringify(this.getCurrentChats()['data']));
+    this.currentChat = this.selectedChat.asObservable();
+  }
 
   public getCurrentChats(): Observable<Chat[]> {
     return this.http.get<Chat[]>(api);
   }
 
-  public getSelectedChat(): Chat {
-    console.log('get ' + this.selectedChat);
-    return this.selectedChat;
-  }
-
-  public setSelectedChat(chat: Chat) {
-    this.selectedChat = chat;
+  changeChat(chat: Chat) {
+    this.selectedChat.next(chat);
+    console.log('SELECTED CHAT AFTER CHANGING ' + JSON.stringify(this.selectedChat['_value']));
   }
 
   public createChat(chatName: string) {

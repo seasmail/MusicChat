@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ChatService} from '../services/chats.service';
 import {Chat} from '../models/chat';
 
@@ -10,7 +10,7 @@ import {Chat} from '../models/chat';
 export class DialogListPageComponent implements OnInit {
   public chats: Chat[];
   public selectedChat: Chat;
-  @Output () chat: Chat;
+  @Output () chat = new EventEmitter<Chat>();
 
 
   constructor(
@@ -27,8 +27,9 @@ export class DialogListPageComponent implements OnInit {
   }
 
   onSelect(chat: Chat) {
-    this.chatService.setSelectedChat(chat);
+    this.chatService.changeChat(chat);
     console.log(chat + ' ' + JSON.stringify(chat));
+    this.chat.emit(chat);
   }
 
 }

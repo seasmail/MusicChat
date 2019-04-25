@@ -10,7 +10,7 @@ import {ChatService} from '../../services/chats.service';
 })
 export class MainComponent implements OnInit {
 
-  // public chat: Chat = {chatId: 1, chatName: 'The first chat', owner: null};
+  public chat: Chat = {chatId: 1, chatName: 'The first chat', owner: null};
 
   constructor(
     private chatService: ChatService

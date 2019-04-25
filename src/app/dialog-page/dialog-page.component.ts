@@ -11,13 +11,18 @@ export class DialogPageComponent implements OnInit {
 
   @Input() chat: Chat;
   // chat: Chat;
+  currentChat: Chat;
   isOpen = false;
 
   constructor(
     private chatService: ChatService
-  ) { }
+  ) {
+    this.chatService.getCurrentChats()
+      .subscribe(res => this.currentChat = res['data'][0]);
+  }
 
   ngOnInit() {
+    this.chatService.currentChat.subscribe(chat => this.currentChat = chat);
   }
 
   openPlaylist() {
