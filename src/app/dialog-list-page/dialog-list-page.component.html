@@ -6,7 +6,9 @@
     </div>
     <ul *ngIf="chats">
       <li *ngFor="let chat of chats">
-        <app-dialog-card [chat]="chat" (click)="onSelect(chat)"></app-dialog-card>
+        <app-dialog-card [chat]="chat"
+                         [ngClass]="{active: chat == selectedChat}"
+                         (click)="onSelect(chat)"></app-dialog-card>
       </li>
     </ul>
     <!--<app-dialog-card></app-dialog-card>-->
