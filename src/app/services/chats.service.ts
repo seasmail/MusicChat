@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Chat} from '../models/chat';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {User} from '../models/user';
 
 const api = 'http://playmaker.gq:8080/social/chats';
 const httpOptions = {
@@ -31,16 +32,15 @@ export class ChatService {
     return this.http.get<Chat[]>(api);
   }
 
-  changeChat(chat: Chat) {
+  public changeChat(chat: Chat) {
     this.selectedChat.next(chat);
-    console.log('SELECTED CHAT AFTER CHANGING ' + JSON.stringify(this.selectedChat['_value']));
   }
 
   public createChat(chatName: string) {
-    console.log('on creating the chat');
-    return this.http.post<Chat>(api, {'chatName': chatName}, httpOptions).toPromise().then(res => {
-      console.log(res);
-      this.getCurrentChats().subscribe(r => console.log(r));
-    });
+    return this.http.post<Chat>(api, {'chatName': chatName}, httpOptions).toPromise();
+  }
+
+  public getParticipants(chatId: number) {
+    return this.http.get<User[]>(api + '/' + chatId + '/participants', httpOptions);
   }
 }

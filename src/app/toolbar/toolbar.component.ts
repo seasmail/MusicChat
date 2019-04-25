@@ -27,6 +27,12 @@ export class ToolbarComponent implements OnInit {
     this.chatService.getCurrentChats()
       .subscribe(res => {
         this.chats = res['data'];
+        for (let i = 0; i < this.chats.length; i++) {
+          this.chatService.getParticipants(this.chats[i].chatId)
+            .subscribe(users => {
+              this.chats[i].participants = users['data'];
+            });
+        }
       });
   }
 

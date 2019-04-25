@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Chat} from '../models/chat';
 import {ChatService} from '../services/chats.service';
+import {createForJitStub} from '@angular/compiler/src/aot/summary_serializer';
 
 @Component({
   selector: 'app-dialog-page',
@@ -22,7 +23,17 @@ export class DialogPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.chatService.currentChat.subscribe(chat => this.currentChat = chat);
+    this.getCurrentChat();
+  }
+
+  public getCurrentChat() {
+    this.chatService.currentChat.subscribe(chat => {
+      this.currentChat = chat;
+      this.chatService.getParticipants(this.currentChat.chatId);
+    });
+  }
+
+  public getParticipants(id: number) {
   }
 
   openPlaylist() {

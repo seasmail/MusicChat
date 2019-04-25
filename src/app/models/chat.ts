@@ -4,5 +4,5 @@ export class Chat {
   chatId: number;
   chatName: string;
   owner: User;
-  // participants: User[];
+  participants: User[];
 }

@@ -25,6 +25,4 @@ export class DialogListPageComponent implements OnInit {
     console.log('list ' + JSON.stringify(this.chats));
   }
 
-
-
 }
