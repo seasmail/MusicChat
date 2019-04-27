@@ -41,6 +41,18 @@ ul {
   }
 }
 
+.options {
+  margin: 10px;
+  li {
+    padding: 5px;
+    color: $msg-color;
+  }
+  li button:hover {
+    color: $accent-color;
+  }
+}
+
+
 .event-message {
   color: $msg-color;
   text-align: center;
@@ -64,6 +76,10 @@ mat-icon {
 }
 
 .music-bar mat-icon {
+  color: white;
+}
+
+.title mat-icon {
   color: white;
 }
 

@@ -43,4 +43,13 @@ export class ChatService {
   public getParticipants(chatId: number) {
     return this.http.get<User[]>(api + '/' + chatId + '/participants', httpOptions);
   }
+
+  public addParticipant(chatId: number, username: string) {
+    console.log('add partcipant');
+    return this.http.post<User>(this.apiParticipants(chatId), {'username': username}, httpOptions);
+  }
+
+  apiParticipants(chatId: number): string {
+    return api + '/' + chatId + '/participants';
+  }
 }

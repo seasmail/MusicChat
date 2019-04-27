@@ -21,8 +21,17 @@ export class DialogListPageComponent implements OnInit {
   onSelect(chat: Chat) {
     this.chatService.changeChat(chat);
     this.selectedChat = chat;
+    this.getParticipants();
     console.log('selected chat ' + this.selectedChat);
     console.log('list ' + JSON.stringify(this.chats));
+  }
+
+  public getParticipants() {
+      this.chatService.getParticipants(this.selectedChat.chatId)
+        .subscribe(users => {
+          console.log('get participants');
+          this.selectedChat.participants = users['data'];
+        });
   }
 
 }

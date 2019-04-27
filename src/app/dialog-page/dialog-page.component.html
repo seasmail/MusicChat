@@ -1,8 +1,19 @@
 <div class="page">
   <div class="toolbar-orange">
-    <div class="text-left title wrap-45">
-      <p *ngIf="currentChat"> {{currentChat.chatName}}</p>
-      <div class="additional-info">0</div>
+    <div class="text-left title wrap-45 flex">
+      <button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <ul class="options">
+          <li><button (click)="addPerson()">Add person</button> </li>
+          <li><button>Remove person</button></li>
+        </ul>
+      </mat-menu>
+      <div>
+        <p *ngIf="currentChat"> {{currentChat.chatName}}</p>
+        <div class="additional-info">{{currentChat.participants.length}}</div>
+      </div>
     </div>
     <div #music_bar class="music-bar wrap-55 float-right text-right">
       <div class="music-nav">
@@ -20,6 +31,7 @@
       <app-playlist-page [width]="music_bar.offsetWidth" *ngIf="isOpen" (click)="openPlaylist()"></app-playlist-page>
     </div>
   </div>
+
   <ul class="list-msg">
     <li class="event-message">Kate joined</li>
     <li class="chat-message">

@@ -21,30 +21,31 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
     console.log('on init toolbar');
     this.getChats();
+    // this.getParticipants();
   }
 
   getChats(): void {
     this.chatService.getCurrentChats()
       .subscribe(res => {
         this.chats = res['data'];
-        for (let i = 0; i < this.chats.length; i++) {
-          this.chatService.getParticipants(this.chats[i].chatId)
-            .subscribe(users => {
-              this.chats[i].participants = users['data'];
-            });
-        }
       });
   }
+
 
   createChat(): void {
     const dialogRef = this.dialog.open(NewChatDialogComponent, {
       width: '400px',
-      data: {name: this.chatName}
+      data: {name: this.chatName, participants: null}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.chatService.createChat(result).then(res => this.getChats());
+      this.chatService.createChat(result['name'])
+        .then(data => {
+          this.chatService.addParticipant(data['chatId'], result['participants']);
+          console.log('result after closing ' + JSON.stringify(result['participants']));
+        })
+        .then(res => this.getChats());
       this.chatName = result;
     });
   }

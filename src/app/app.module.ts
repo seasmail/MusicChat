@@ -21,6 +21,7 @@ import {ChatService} from './services/chats.service';
 import {UserService} from './services/user.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
+import { AddParticipantDialogComponent } from './add-participant-dialog/add-participant-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,9 @@ import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.compon
     PlaylistPageComponent,
     MainComponent,
     NewChatDialogComponent,
+    AddParticipantDialogComponent,
   ],
-  entryComponents: [NewChatDialogComponent],
+  entryComponents: [NewChatDialogComponent, AddParticipantDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
