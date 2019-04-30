@@ -22,6 +22,7 @@ export class DialogListPageComponent implements OnInit {
     this.chatService.changeChat(chat);
     this.selectedChat = chat;
     this.getParticipants();
+    this.getMessages();
     console.log('selected chat ' + this.selectedChat);
     console.log('list ' + JSON.stringify(this.chats));
   }
@@ -32,6 +33,14 @@ export class DialogListPageComponent implements OnInit {
           console.log('get participants');
           this.selectedChat.participants = users['data'];
         });
+  }
+
+  public getMessages() {
+    this.chatService.getMessages(this.selectedChat.chatId)
+      .subscribe(messages => {
+        console.log('get messages');
+        this.selectedChat.messages = messages['data'].reverse();
+      });
   }
 
 }

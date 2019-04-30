@@ -22,6 +22,9 @@ import {UserService} from './services/user.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
 import { AddParticipantDialogComponent } from './add-participant-dialog/add-participant-dialog.component';
+import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
+import {rxStompConfig} from './_helpers/rx-stomp.config';
+import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 
 @NgModule({
   declarations: [
@@ -53,13 +56,23 @@ import { AddParticipantDialogComponent } from './add-participant-dialog/add-part
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxAutoScrollModule
   ],
   providers: [
     AuthService,
     ChatService,
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {
+      provide: InjectableRxStompConfig,
+      useValue: rxStompConfig
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig]
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Chat} from '../models/chat';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/user';
+import {Message} from '../models/message';
 
 const api = 'http://playmaker.gq:8080/social/chats';
 const httpOptions = {
@@ -47,6 +48,10 @@ export class ChatService {
   public addParticipant(chatId: number, username: string) {
     console.log('add partcipant');
     return this.http.post<User>(this.apiParticipants(chatId), {'username': username}, httpOptions);
+  }
+
+  public getMessages(chatId: number) {
+    return this.http.get<Message[]>(`${api}/${chatId}/messages`);
   }
 
   apiParticipants(chatId: number): string {
