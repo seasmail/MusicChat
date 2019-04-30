@@ -11,25 +11,25 @@ export class DialogListPageComponent implements OnInit {
   @Input() chats: Chat[];
   public selectedChat: Chat;
   constructor(
-    private chatService: ChatService) { }
+    private chatService: ChatService) {
+  }
 
   ngOnInit() {
-    console.log('LIST ON INIT');
-    this.chatService.currentChat.subscribe(chat => this.selectedChat = chat);
+    this.chatService.currentChat.subscribe(chat => {
+      console.log(chat);
+      this.selectedChat = chat;
+    });
   }
 
   onSelect(chat: Chat) {
     this.chatService.changeChat(chat);
     this.selectedChat = chat;
     this.getParticipants();
-    console.log('selected chat ' + this.selectedChat);
-    console.log('list ' + JSON.stringify(this.chats));
   }
 
   public getParticipants() {
       this.chatService.getParticipants(this.selectedChat.chatId)
         .subscribe(users => {
-          console.log('get participants');
           this.selectedChat.participants = users['data'];
         });
   }

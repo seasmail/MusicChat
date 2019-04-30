@@ -10,7 +10,7 @@ import { DialogCardComponent } from './dialog-card/dialog-card.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {DialogPageComponent} from './dialog-page/dialog-page.component';
-import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 import {MatMenuModule} from '@angular/material';
 import { MainComponent } from './pages/main/main.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -22,6 +22,8 @@ import {UserService} from './services/user.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
 import { AddParticipantDialogComponent } from './add-participant-dialog/add-participant-dialog.component';
+import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
+import { PlaylistCardComponent } from './playlist-card/playlist-card.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,12 @@ import { AddParticipantDialogComponent } from './add-participant-dialog/add-part
     DialogCardComponent,
     SidenavComponent,
     DialogPageComponent,
-    PlaylistPageComponent,
+    PlaylistComponent,
     MainComponent,
     NewChatDialogComponent,
     AddParticipantDialogComponent,
+    PlaylistPageComponent,
+    PlaylistCardComponent,
   ],
   entryComponents: [NewChatDialogComponent, AddParticipantDialogComponent],
   imports: [

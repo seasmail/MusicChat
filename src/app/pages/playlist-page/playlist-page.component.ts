@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-playlist-page',
@@ -7,13 +8,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PlaylistPageComponent implements OnInit {
 
-  @Input()
-  width: number;
-
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
 
+  back() {
+    this.router.navigateByUrl('/chat');
+  }
 
 }

@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+
+.wrap {
+  width: 75vw;
+}
+
+.playlist {
+  background-color: $background-color;
+}
+
+.title {
+  padding: 50px 0 30px;
+  font-size: 20px;
+}
+
+.cards {
+  //text-align: center;
+  //display: grid;
+  padding: 10px 40px;
+  //grid-auto-columns: auto auto auto auto auto;
+  //grid-column-gap: 20px;
+}
+
+mat-icon {
+  color: white;
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+mat-icon:hover {
+  color: $accent-color;
+}

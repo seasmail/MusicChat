@@ -248,3 +248,10 @@ mat-icon {
 .mat-form-field-infix {
   color: black;
 }
+
+.card {
+  display: flex;
+  padding: 20px 16px;
+  border-bottom: 1px solid $light-grey;
+  background-color: inherit;
+}

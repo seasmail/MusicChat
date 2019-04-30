@@ -33,7 +33,9 @@ export class DialogPageComponent implements OnInit {
   public getCurrentChat() {
     this.chatService.currentChat.subscribe(chat => {
       this.currentChat = chat;
-      this.chatService.getParticipants(this.currentChat.chatId);
+      if (!chat) {
+        this.chatService.getParticipants(this.currentChat.chatId);
+      }
     });
   }
 
@@ -49,6 +51,10 @@ export class DialogPageComponent implements OnInit {
         .subscribe(res => this.chatService.getParticipants(result['chatId']));
       this.currentChat.participants.push(result['username']);
     });
+  }
+
+  removePerson() {
+
   }
 
   openPlaylist() {

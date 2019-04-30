@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
-import {PlaylistPageComponent} from './playlist-page/playlist-page.component';
+import {PlaylistComponent} from './playlist/playlist.component';
 import {MainComponent} from './pages/main/main.component';
 import {AuthComponent} from './pages/auth/auth.component';
 import {AuthModule} from './auth/auth.module';
 import {AuthGuard} from './_helpers/auth.guard';
-import {DialogPageComponent} from './dialog-page/dialog-page.component';
+import {PlaylistPageComponent} from './pages/playlist-page/playlist-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full'},
