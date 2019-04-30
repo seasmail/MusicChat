@@ -24,6 +24,7 @@ import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.compon
 import { AddParticipantDialogComponent } from './add-participant-dialog/add-participant-dialog.component';
 import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
 import { PlaylistCardComponent } from './playlist-card/playlist-card.component';
+import { AudioDialogComponent } from './audio-dialog/audio-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,13 @@ import { PlaylistCardComponent } from './playlist-card/playlist-card.component';
     AddParticipantDialogComponent,
     PlaylistPageComponent,
     PlaylistCardComponent,
+    AudioDialogComponent,
   ],
-  entryComponents: [NewChatDialogComponent, AddParticipantDialogComponent],
+  entryComponents: [
+    NewChatDialogComponent,
+    AddParticipantDialogComponent,
+    AudioDialogComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

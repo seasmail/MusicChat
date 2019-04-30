@@ -1,0 +1,42 @@
+@import "../../styles.scss";
+
+.music-info {
+  border-bottom: 1px solid $dark-divider-color;
+  display: flow-root;
+}
+
+.square {
+  height: 120px;
+  width: 120px;
+  border-radius: 0;
+}
+
+.info {
+  padding: 16px;
+  margin-left: 120px;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.mat-dialog-actions {
+  clear: both;
+}
+
+:host /deep/ app-playlist {
+  .music-nav {
+    border: none;
+    top: unset;
+    right: unset;
+  }
+
+  ul {
+    padding: 20px 0;
+  }
+}

@@ -255,3 +255,16 @@ mat-icon {
   border-bottom: 1px solid $light-grey;
   background-color: inherit;
 }
+
+.square {
+  width: 143px;
+  height: 143px;
+  background-color: $background-light-color;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}

@@ -1,17 +1,5 @@
 @import "../../styles.scss";
 
-.square {
-  width: 143px;
-  height: 143px;
-  background-color: $background-light-color;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  border-radius: 4px;
-  position: relative;
-  cursor: pointer;
-  display: block;
-  overflow: hidden;
-}
 
 .title {
   color: $light-grey;
