@@ -25,6 +25,9 @@ import { AddParticipantDialogComponent } from './add-participant-dialog/add-part
 import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
 import { PlaylistCardComponent } from './playlist-card/playlist-card.component';
 import { AudioDialogComponent } from './audio-dialog/audio-dialog.component';
+import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
+import {rxStompConfig} from './_helpers/rx-stomp.config';
+import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 
 @NgModule({
   declarations: [
@@ -63,13 +66,23 @@ import { AudioDialogComponent } from './audio-dialog/audio-dialog.component';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxAutoScrollModule
   ],
   providers: [
     AuthService,
     ChatService,
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {
+      provide: InjectableRxStompConfig,
+      useValue: rxStompConfig
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig]
+    }
   ],
   bootstrap: [AppComponent]
 })

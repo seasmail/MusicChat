@@ -33,17 +33,16 @@
     </div>
   </div>
 
-  <ul class="list-msg">
-    <li class="event-message">Kate joined</li>
-    <li class="chat-message">
-      <div class="image-msg"></div><span>Author</span><p>Hi</p>
+  <ul ngx-auto-scroll class="list-msg">
+    <li class="chat-message" *ngFor="let message of currentChat.messages">
+      <div class="image-msg"></div><span>{{message.sender.username}}</span><p>{{message.content}}</p>
     </li>
   </ul>
   <form class="message-form">
     <div class="form-group">
-      <input type="text" placeholder="Write a message" autocomplete="off">
+      <input [(ngModel)]="messageText" name="messageInput" type="text" placeholder="Write a message" autocomplete="off">
       <mat-icon class="input-icon-left-bottom rotated-icon">attach_file</mat-icon>
-      <button (click)="send()">
+      <button (click)="sendMessage()">
         <mat-icon>send</mat-icon>
       </button>
     </div>

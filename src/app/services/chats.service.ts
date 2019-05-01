@@ -4,11 +4,12 @@ import {Router} from '@angular/router';
 import {Chat} from '../models/chat';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/user';
+import {Message} from '../models/message';
 
 const api = 'http://playmaker.gq:8080/social/chats';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-}
+};
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,10 @@ export class ChatService {
 
   public removeParticipant(chatId: number, username: string) {
     // return this.http.delete(this.apiParticipants(chatId));
+  }
+
+  public getMessages(chatId: number) {
+    return this.http.get<Message[]>(`${api}/${chatId}/messages`);
   }
 
   apiParticipants(chatId: number): string {

@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Chat} from '../models/chat';
 import {ChatService} from '../services/chats.service';
-import {createForJitStub} from '@angular/compiler/src/aot/summary_serializer';
-import {NewChatDialogComponent} from '../new-chat-dialog/new-chat-dialog.component';
 import {MatDialog} from '@angular/material';
 import {AddParticipantDialogComponent} from '../add-participant-dialog/add-participant-dialog.component';
+import {RxStompService} from '@stomp/ng2-stompjs';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-dialog-page',
@@ -17,10 +17,13 @@ export class DialogPageComponent implements OnInit {
   // chat: Chat;
   currentChat: Chat;
   isOpen = false;
+  currentSubscription: Subscription;
+  messageText: string;
 
   constructor(
     public dialog: MatDialog,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private rxStompService: RxStompService
   ) {
     this.chatService.getCurrentChats()
       .subscribe(res => this.currentChat = res['data'][0]);
@@ -32,10 +35,18 @@ export class DialogPageComponent implements OnInit {
 
   public getCurrentChat() {
     this.chatService.currentChat.subscribe(chat => {
+      if (this.currentSubscription) {
+        this.currentSubscription.unsubscribe();
+      }
       this.currentChat = chat;
       if (!chat) {
         this.chatService.getParticipants(this.currentChat.chatId);
       }
+      this.currentSubscription = this.rxStompService.watch(`/topic/${this.currentChat.chatId}`)
+        .subscribe((message) => {
+          this.currentChat.messages.push(JSON.parse(message.body));
+          console.log(message.body);
+        });
     });
   }
 
@@ -55,6 +66,11 @@ export class DialogPageComponent implements OnInit {
 
   removePerson() {
 
+  }
+
+  sendMessage() {
+    this.rxStompService.publish({destination: `/app/chat/${this.currentChat.chatId}/sendMessage`, body: this.messageText});
+    this.messageText = '';
   }
 
   openPlaylist() {
