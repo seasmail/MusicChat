@@ -1,3 +1,6 @@
+<button class="right" [mat-dialog-close]="data">
+  <mat-icon>cancel</mat-icon>
+</button>
 <div class="music-info">
   <div class="square left"></div>
   <div class="info">
@@ -9,7 +12,7 @@
 <app-playlist></app-playlist>
 
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
-</div>
+<!--<div mat-dialog-actions>-->
+  <!--<button mat-button >Close</button>-->
+  <!--<button mat-button  cdkFocusInitial>Create</button>-->
+<!--</div>-->
