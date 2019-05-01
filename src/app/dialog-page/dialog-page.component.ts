@@ -39,12 +39,14 @@ export class DialogPageComponent implements OnInit {
         this.currentSubscription.unsubscribe();
       }
       this.currentChat = chat;
+      if (!chat) {
+        this.chatService.getParticipants(this.currentChat.chatId);
+      }
       this.currentSubscription = this.rxStompService.watch(`/topic/${this.currentChat.chatId}`)
         .subscribe((message) => {
           this.currentChat.messages.push(JSON.parse(message.body));
           console.log(message.body);
         });
-      this.chatService.getParticipants(this.currentChat.chatId);
     });
   }
 
@@ -60,6 +62,10 @@ export class DialogPageComponent implements OnInit {
         .subscribe(res => this.chatService.getParticipants(result['chatId']));
       this.currentChat.participants.push(result['username']);
     });
+  }
+
+  removePerson() {
+
   }
 
   sendMessage() {

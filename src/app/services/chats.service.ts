@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Chat} from '../models/chat';
 import {BehaviorSubject, Observable} from 'rxjs';
@@ -9,7 +9,7 @@ import {Message} from '../models/message';
 const api = 'http://playmaker.gq:8080/social/chats';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-}
+};
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,6 @@ export class ChatService {
     this.currentChat = this.selectedChat.asObservable();
     this.chats = new BehaviorSubject<Chat[]>(this.getCurrentChats()['data']);
     this.currentChats = this.chats.asObservable();
-
   }
 
   public getCurrentChats(): Observable<Chat[]> {
@@ -48,6 +47,10 @@ export class ChatService {
   public addParticipant(chatId: number, username: string) {
     console.log('add partcipant');
     return this.http.post<User>(this.apiParticipants(chatId), {'username': username}, httpOptions);
+  }
+
+  public removeParticipant(chatId: number, username: string) {
+    // return this.http.delete(this.apiParticipants(chatId));
   }
 
   public getMessages(chatId: number) {

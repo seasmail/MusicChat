@@ -7,12 +7,13 @@
       <mat-menu #menu="matMenu" xPosition="after">
         <ul class="options">
           <li><button (click)="addPerson()">Add person</button> </li>
-          <li><button>Remove person</button></li>
+          <li><button (click)="removePerson()">Remove person</button></li>
+          <li><button (click)="removePerson()">Remove person</button></li>
         </ul>
       </mat-menu>
       <div>
         <p *ngIf="currentChat"> {{currentChat.chatName}}</p>
-        <div class="additional-info">{{currentChat.participants.length}}</div>
+        <div class="additional-info" *ngIf="currentChat.participants">{{currentChat.participants.length}}</div>
       </div>
     </div>
     <div #music_bar class="music-bar wrap-55 float-right text-right">
@@ -28,7 +29,7 @@
       <button  (click)="openPlaylist()">
         <mat-icon>playlist_play</mat-icon>
       </button>
-      <app-playlist-page [width]="music_bar.offsetWidth" *ngIf="isOpen" (click)="openPlaylist()"></app-playlist-page>
+      <app-playlist [width]="music_bar.offsetWidth" *ngIf="isOpen" (click)="openPlaylist()"></app-playlist>
     </div>
   </div>
 
