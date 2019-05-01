@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {NewChatDialogComponent} from '../new-chat-dialog/new-chat-dialog.component';
 import {MatDialog} from '@angular/material';
 import {ChatService} from '../services/chats.service';
 import {Chat} from '../models/chat';
+import {DialogListPageComponent} from '../dialog-list-page/dialog-list-page.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -21,14 +22,31 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
     console.log('on init toolbar');
     this.getChats();
-    // this.getParticipants();
   }
 
   getChats(): void {
     this.chatService.getCurrentChats()
       .subscribe(res => {
         this.chats = res['data'];
-      });
+        console.log(res['data']);
+      },
+        error => console.log('Error: ' + error),
+        () => this.getLastChatsMessage()
+      );
+    // this.getLastChatsMessage();
+  }
+
+  public getLastChatsMessage() {
+    console.log('last msg');
+    for (let i = 0; i < this.chats.length; i++) {
+      this.chatService.getMessages(this.chats[i].chatId)
+        .subscribe(messages => {
+          if (this.chats[i]) {
+            this.chats[i].messages = [];
+            this.chats[i].messages.push(messages['data'][0]);
+          }
+        });
+    }
   }
 
 

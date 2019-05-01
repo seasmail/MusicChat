@@ -35,7 +35,9 @@
 
   <ul ngx-auto-scroll class="list-msg">
     <li class="chat-message" *ngFor="let message of currentChat.messages">
-      <div class="image-msg"></div><span>{{message.sender.username}}</span><p>{{message.content}}</p>
+      <div class="image-msg"></div><span *ngIf="message">{{message.sender.username}}</span>
+      <div class="text-right float-right additional-info" *ngIf="message">{{message.sendTime | date: 'h:mm'}}</div>
+      <p *ngIf="message">{{message.content}}</p>
     </li>
   </ul>
   <form class="message-form">

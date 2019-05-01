@@ -14,7 +14,6 @@ import {Subscription} from 'rxjs';
 export class DialogPageComponent implements OnInit {
 
   @Input() chat: Chat;
-  // chat: Chat;
   currentChat: Chat;
   isOpen = false;
   currentSubscription: Subscription;
