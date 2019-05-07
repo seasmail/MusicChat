@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-new-chat-dialog',
   templateUrl: './new-chat-dialog.component.html',
-  styleUrls: ['./new-chat-dialog.component.scss']
+  styleUrls: ['../dialog.scss']
 })
 export class NewChatDialogComponent {
 

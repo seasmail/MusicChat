@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-add-participant-dialog',
   templateUrl: './add-participant-dialog.component.html',
-  styleUrls: ['./add-participant-dialog.component.scss']
+  styleUrls: ['../dialog.scss']
 })
 export class AddParticipantDialogComponent {
 

@@ -4,9 +4,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-choose-track-dialog',
   templateUrl: './choose-track-dialog.component.html',
-  styleUrls: ['./choose-track-dialog.component.scss']
+  styleUrls: ['../dialog.scss']
 })
-export class ChooseTrackDialogComponent{
+export class ChooseTrackDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ChooseTrackDialogComponent>,
