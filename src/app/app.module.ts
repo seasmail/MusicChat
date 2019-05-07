@@ -28,6 +28,7 @@ import { AudioDialogComponent } from './audio-dialog/audio-dialog.component';
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
 import {rxStompConfig} from './_helpers/rx-stomp.config';
 import {NgxAutoScrollModule} from 'ngx-auto-scroll';
+import { EmptyDialodComponent } from './empty-dialod/empty-dialod.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {NgxAutoScrollModule} from 'ngx-auto-scroll';
     PlaylistPageComponent,
     PlaylistCardComponent,
     AudioDialogComponent,
+    EmptyDialodComponent,
   ],
   entryComponents: [
     NewChatDialogComponent,
