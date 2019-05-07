@@ -10,12 +10,12 @@ import {AuthGuard} from './_helpers/auth.guard';
 import {PlaylistPageComponent} from './pages/playlist-page/playlist-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full'},
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full'},
   { path: 'chat', component: MainComponent, canActivate: [AuthGuard]},
   { path: 'playlist', component: PlaylistPageComponent},
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '/auth/login' }
 ];
 
 @NgModule({

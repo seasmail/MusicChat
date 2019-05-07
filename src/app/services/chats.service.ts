@@ -41,23 +41,19 @@ export class ChatService {
   }
 
   public getParticipants(chatId: number) {
-    return this.http.get<User[]>(api + '/' + chatId + '/participants', httpOptions);
+    return this.http.get<User[]>(`${api}/${chatId}/participants`, httpOptions);
   }
 
   public addParticipant(chatId: number, username: string) {
-    console.log('add partcipant');
-    return this.http.post<User>(this.apiParticipants(chatId), {'username': username}, httpOptions);
+    return this.http.post<User>(`${api}/${chatId}/participants`, {'username': username}, httpOptions);
   }
 
   public removeParticipant(chatId: number, username: string) {
-    // return this.http.delete(this.apiParticipants(chatId));
+    return this.http.request('delete', `${api}/${chatId}/participants`, {body: {'username': username}});
   }
 
   public getMessages(chatId: number) {
     return this.http.get<Message[]>(`${api}/${chatId}/messages`);
   }
 
-  apiParticipants(chatId: number): string {
-    return api + '/' + chatId + '/participants';
-  }
 }

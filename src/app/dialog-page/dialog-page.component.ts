@@ -67,6 +67,11 @@ export class DialogPageComponent implements OnInit {
 
   }
 
+  leaveChat() {
+    this.chatService.removeParticipant(this.currentChat.chatId, localStorage.getItem('username'))
+      .subscribe(res => console.log(res));
+  }
+
   sendMessage() {
     this.rxStompService.publish({destination: `/app/chat/${this.currentChat.chatId}/sendMessage`, body: this.messageText});
     this.messageText = '';
