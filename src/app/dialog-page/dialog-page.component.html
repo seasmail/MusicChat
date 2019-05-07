@@ -34,13 +34,13 @@
   </div>
 
   <ul ngx-auto-scroll class="list-msg">
-    <li class="chat-message" *ngFor="let message of currentChat.messages">
-      <div class="image-msg"></div><span *ngIf="message">{{message.sender.username}}</span>
+    <li [ngClass]="{'chat-message': message.type==='CHAT', 'event-message': message.type !=='CHAT'}" class="chat-message" *ngFor="let message of currentChat.messages">
+      <div class="image-msg" *ngIf="message.type==='CHAT'"></div><span *ngIf="message">{{message.sender.username}}</span>
       <div class="text-right float-right additional-info" *ngIf="message">{{message.sendTime | date: 'h:mm'}}</div>
       <p *ngIf="message">{{message.content}}</p>
     </li>
   </ul>
-  <form class="message-form">
+  <form class="message-form" (keyup.enter)="sendMessage()">
     <div class="form-group">
       <input [(ngModel)]="messageText" name="messageInput" type="text" placeholder="Write a message" autocomplete="off">
       <button class="absolute">

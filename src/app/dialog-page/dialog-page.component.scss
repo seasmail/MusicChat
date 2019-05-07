@@ -54,8 +54,14 @@ ul {
 
 
 .event-message {
-  color: $msg-color;
+  color: $background-color;
   text-align: center;
+  p {
+    color: $msg-color;
+  }
+  span {
+    font-weight: bold;
+  }
 }
 
 .form-group {

@@ -13,5 +13,5 @@ export class Message {
   public content: string;
   public chat: Chat;
   public sendTime: Date;
-  public messageType: MessageType;
+  public type: MessageType;
 }
