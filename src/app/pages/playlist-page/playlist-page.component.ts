@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {NewChatDialogComponent} from '../../new-chat-dialog/new-chat-dialog.component';
-import {AudioDialogComponent} from '../../audio-dialog/audio-dialog.component';
+import {NewChatDialogComponent} from '../../dialogs/new-chat-dialog/new-chat-dialog.component';
+import {AudioDialogComponent} from '../../dialogs/audio-dialog/audio-dialog.component';
 import {MatDialog} from '@angular/material';
 
 @Component({

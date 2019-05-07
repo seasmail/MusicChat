@@ -20,15 +20,16 @@ import {AuthService} from './services/auth.service';
 import {ChatService} from './services/chats.service';
 import {UserService} from './services/user.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
-import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
-import { AddParticipantDialogComponent } from './add-participant-dialog/add-participant-dialog.component';
+import { NewChatDialogComponent } from './dialogs/new-chat-dialog/new-chat-dialog.component';
+import { AddParticipantDialogComponent } from './dialogs/add-participant-dialog/add-participant-dialog.component';
 import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
 import { PlaylistCardComponent } from './playlist-card/playlist-card.component';
-import { AudioDialogComponent } from './audio-dialog/audio-dialog.component';
+import { AudioDialogComponent } from './dialogs/audio-dialog/audio-dialog.component';
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
 import {rxStompConfig} from './_helpers/rx-stomp.config';
 import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 import { EmptyDialodComponent } from './empty-dialod/empty-dialod.component';
+import { ChooseTrackDialogComponent } from './dialogs/choose-track-dialog/choose-track-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,11 +47,13 @@ import { EmptyDialodComponent } from './empty-dialod/empty-dialod.component';
     PlaylistCardComponent,
     AudioDialogComponent,
     EmptyDialodComponent,
+    ChooseTrackDialogComponent,
   ],
   entryComponents: [
     NewChatDialogComponent,
     AddParticipantDialogComponent,
     AudioDialogComponent,
+    ChooseTrackDialogComponent
   ],
   imports: [
     BrowserModule,

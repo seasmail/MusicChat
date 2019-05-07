@@ -43,7 +43,9 @@
   <form class="message-form">
     <div class="form-group">
       <input [(ngModel)]="messageText" name="messageInput" type="text" placeholder="Write a message" autocomplete="off">
-      <mat-icon class="input-icon-left-bottom rotated-icon">attach_file</mat-icon>
+      <button class="absolute">
+        <mat-icon class="input-icon-left-bottom rotated-icon" (click)="attachment()">attach_file</mat-icon>
+      </button>
       <button (click)="sendMessage()">
         <mat-icon>send</mat-icon>
       </button>

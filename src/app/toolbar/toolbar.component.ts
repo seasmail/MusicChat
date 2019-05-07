@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit, ViewChild} from '@angular/core';
-import {NewChatDialogComponent} from '../new-chat-dialog/new-chat-dialog.component';
+import {NewChatDialogComponent} from '../dialogs/new-chat-dialog/new-chat-dialog.component';
 import {MatDialog} from '@angular/material';
 import {ChatService} from '../services/chats.service';
 import {Chat} from '../models/chat';
