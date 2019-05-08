@@ -7,7 +7,7 @@
       <mat-menu #menu="matMenu" xPosition="after">
         <ul class="options">
           <li><button (click)="addPerson()">Add person</button> </li>
-          <li><button (click)="removePerson()">Remove person</button></li>
+          <li *ngIf="currentChat.owner.username === currentUsername"><button (click)="removePerson()">Remove person</button></li>
           <li><button (click)="leaveChat()">Leave chat</button></li>
         </ul>
       </mat-menu>
@@ -33,8 +33,8 @@
     </div>
   </div>
 
-  <ul ngx-auto-scroll class="list-msg">
-    <li [ngClass]="{'chat-message': message.type==='CHAT', 'event-message': message.type !=='CHAT'}" class="chat-message" *ngFor="let message of currentChat.messages">
+  <ul ngx-auto-scroll class="list-msg" *ngIf="currentChat.messages">
+    <li [ngClass]="{'chat-message': message.type==='CHAT', 'event-message': message.type!=='CHAT'}" class="chat-message" *ngFor="let message of currentChat.messages">
       <div class="image-msg" *ngIf="message.type==='CHAT'"></div><span *ngIf="message">{{message.sender.username}}</span>
       <div class="text-right float-right additional-info" *ngIf="message">{{message.sendTime | date: 'h:mm'}}</div>
       <p *ngIf="message">{{message.content}}</p>

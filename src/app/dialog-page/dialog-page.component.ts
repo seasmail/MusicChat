@@ -20,6 +20,7 @@ export class DialogPageComponent implements OnInit {
   isOpen = false;
   currentSubscription: Subscription;
   messageText: string;
+  currentUsername = localStorage.getItem('username');
 
   constructor(
     public dialog: MatDialog,
@@ -42,6 +43,7 @@ export class DialogPageComponent implements OnInit {
       this.currentChat = chat;
       if (!chat) {
         this.chatService.getParticipants(this.currentChat.chatId);
+        console.log(JSON.stringify(this.currentChat.participants));
       }
       this.currentSubscription = this.rxStompService.watch(`/topic/${this.currentChat.chatId}`)
         .subscribe((message) => {
@@ -54,19 +56,29 @@ export class DialogPageComponent implements OnInit {
   addPerson(): void {
     const dialogRef = this.dialog.open(AddParticipantDialogComponent, {
       width: '400px',
-      data: {chatId: this.currentChat.chatId, username: null}
+      data: {type: 'Add', chatId: this.currentChat.chatId, username: null}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.chatService.addParticipant(result['chatId'], result['username'])
-        .subscribe(res => this.chatService.getParticipants(result['chatId']));
-      this.currentChat.participants.push(result['username']);
+          .subscribe(participants => this.currentChat.participants.push(result['username']));
     });
   }
 
   removePerson() {
+    const dialogRef = this.dialog.open(AddParticipantDialogComponent, {
+      width: '400px',
+      data: {type: 'Remove', chatId: this.currentChat.chatId, username: null}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.chatService.removeParticipant(this.currentChat.chatId, result['username'])
+        .subscribe(res => {
+          this.currentChat.participants.slice(this.currentChat.participants.indexOf(result['username']), 1);
+        });
+    });
   }
 
   leaveChat() {
@@ -90,14 +102,6 @@ export class DialogPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.chatService.createChat(result['name'])
-      //   .then(data => {
-      //     this.chatService.addParticipant(data['chatId'], result['participants']);
-      //     console.log('result after closing ' + JSON.stringify(result['participants']));
-      //   })
-      //   .then(res => this.getChats());
-      // this.chatName = result;
     });
   }
 }
