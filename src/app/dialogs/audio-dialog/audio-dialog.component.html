@@ -9,7 +9,10 @@
 </div>
 
 <div mat-dialog-content>
-<app-playlist></app-playlist>
+  <div class="wrap">
+    <p>You don't have audios yet </p> <mat-icon>sentiment_very_dissatisfied</mat-icon>
+  </div>
+  <app-playlist *ngIf="false"></app-playlist>
 
 </div>
 

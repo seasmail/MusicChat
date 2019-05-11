@@ -1,5 +1,14 @@
 @import "../../../basis.scss";
 
+.wrap {
+  padding: 20px;
+  text-align: center;
+}
+
+mat-icon {
+  margin-top: 10px;
+  cursor: default;
+}
 .music-info {
   border-bottom: 1px solid $dark-divider-color;
   display: flow-root;
