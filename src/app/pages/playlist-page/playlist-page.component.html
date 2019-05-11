@@ -3,14 +3,8 @@
     <button (click)="back()"><mat-icon>cancel</mat-icon></button>
     <h1 class="title">Your playlist</h1>
   </div>
-  <div class="cards">
-    <app-playlist-card (click)="openAudio()"></app-playlist-card>
-    <app-playlist-card></app-playlist-card>
-    <app-playlist-card></app-playlist-card>
-    <app-playlist-card></app-playlist-card>
-    <app-playlist-card></app-playlist-card>
-    <app-playlist-card></app-playlist-card>
-
+  <div class="cards" >
+      <app-playlist-card (click)="openAudio(chat)" [chat]="chat" *ngFor="let chat of chats"></app-playlist-card>
   </div>
 
 </div>

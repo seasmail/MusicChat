@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Chat} from '../models/chat';
 
 @Component({
   selector: 'app-playlist-card',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistCardComponent implements OnInit {
 
+  @Input() chat: Chat;
   constructor() { }
 
   ngOnInit() {

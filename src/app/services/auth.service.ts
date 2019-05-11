@@ -4,7 +4,6 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
 import {UserService} from './user.service';
 import {Router} from '@angular/router';
-import {User} from '../models/user';
 
 
 const httpOptions = {
@@ -35,6 +34,7 @@ export class AuthService {
   }
 
   public login(username: string, password: string) {
+    this.router.navigateByUrl('/chat');
     return this.http.post<any>(api + 'login', {username, password}, httpOptions).subscribe((data: Response) => {
         this.decoded = jwt_decode(data.headers.get('Authorization'));
         this.userService.setSession(data, this.decoded['sub']);
@@ -47,8 +47,8 @@ export class AuthService {
   }
 
   public logout() {
-    localStorage.removeItem('token');
     this.currentUserSubject.next(null);
+    localStorage.clear();
     this.router.navigateByUrl('/auth/login');
   }
 

@@ -1,21 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-$background-color: #222;
-$background-light-color: #EBEBEB;
-$light-grey: #F5F5F5;
-$left-side-width: 25vw;
-$right-side-width: 45vw;
-$whole-width: 70vw;
-$accent-color: #FF5900;
-$msg-color: #464646;
-$light-orange: #FFA473;
-$addit-light-orange: #FFCDB2;
-$dark-divider-color: #D7D7D7;
-$addit-info-font-size: 12px;
-$btn-disable-orange: #BF8C70;
-  /* http://meyerweb.com/eric/tools/css/reset/
-     v2.0 | 20110126
-     License: none (public domain)
-  */
+@import "basis.scss";
+
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 

@@ -7,13 +7,14 @@ import {AuthService} from '../services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authnService: AuthService
+    private authService: AuthService
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = this.authnService.currentUserValue;
+    const currentUser = this.authService.currentUserValue;
     if (currentUser) {
       // logged in so return true
+      console.log('TRUE');
       return true;
     }
 

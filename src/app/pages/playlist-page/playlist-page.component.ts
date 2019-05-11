@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {NewChatDialogComponent} from '../../dialogs/new-chat-dialog/new-chat-dialog.component';
 import {AudioDialogComponent} from '../../dialogs/audio-dialog/audio-dialog.component';
 import {MatDialog} from '@angular/material';
+import {ChatService} from '../../services/chats.service';
+import {Chat} from '../../models/chat';
 
 @Component({
   selector: 'app-playlist-page',
@@ -12,23 +14,27 @@ import {MatDialog} from '@angular/material';
 export class PlaylistPageComponent implements OnInit {
 
   currentSong: string;
+  chats: Chat[];
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
+    private chatService: ChatService
   ) { }
 
   ngOnInit() {
+    this.chatService.getCurrentChats()
+      .subscribe(chats => this.chats = chats['data']);
   }
 
   back() {
     this.router.navigateByUrl('/chat');
   }
 
-  openAudio(): void {
+  openAudio(chat: Chat): void {
     const dialogRef = this.dialog.open(AudioDialogComponent, {
       width: '400px',
-      data: {name: null, participants: null}
+      data: {name: null, chat: chat}
     });
 
     dialogRef.afterClosed().subscribe(result => {
