@@ -55,3 +55,9 @@ button:disabled, button:disabled:hover {
   border: 4px solid $btn-disable-orange	;
   color: $btn-disable-orange	;
 }
+
+.error {
+  color: red;
+  font-size: 11px;
+  text-align: initial;
+}

@@ -9,6 +9,7 @@
   <mat-form-field>
     <input matInput placeholder="Repeat a password" formControlName="confPassword" type="password" required>
   </mat-form-field>
+  <div class="error" *ngIf="signupForm.controls['password'].value !== signupForm.controls['confPassword'].value && signupForm.controls['confPassword'].value !== ''">The password does not match</div>
 </form>
 
 <div class="btns-area">
