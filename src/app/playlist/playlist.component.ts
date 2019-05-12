@@ -40,21 +40,21 @@ export class PlaylistComponent implements OnInit {
   onSelect(track: Track) {
     this.musicService.addTrack(track, this.chat)
       .subscribe(res => {
-        console.log(res);
-        this.musicService.getTrackList(this.chat).subscribe(result => {
-          this.chatTracks = result['data'];
-        });
+        this.getTrackList(this.chat);
       });
   }
 
   onDelete(track: Track) {
     this.musicService.deleteTrack(track, this.chat)
       .subscribe(res => {
-        this.musicService.getTrackList(this.chat).subscribe(result => {
-          console.log('after delete' + JSON.stringify(result));
-          this.chatTracks = result['data'];
-        });
+        this.getTrackList(this.chat);
       });
+  }
+
+  getTrackList(chat: Chat) {
+    this.musicService.getTrackList(chat).subscribe(result => {
+      this.chatTracks = result['data'];
+    });
   }
 
 
