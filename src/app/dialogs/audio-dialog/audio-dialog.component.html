@@ -9,10 +9,10 @@
 </div>
 
 <div mat-dialog-content>
-  <div class="wrap">
+  <div class="wrap" *ngIf="!tracks">
     <p>You don't have audios yet </p> <mat-icon>sentiment_very_dissatisfied</mat-icon>
   </div>
-  <app-playlist *ngIf="false"></app-playlist>
+  <app-playlist *ngIf="tracks" [type]="type" [selectedChat]="data.chat" [tracks]="tracks"></app-playlist>
 
 </div>
 

@@ -24,7 +24,10 @@ export class PlaylistPageComponent implements OnInit {
 
   ngOnInit() {
     this.chatService.getCurrentChats()
-      .subscribe(chats => this.chats = chats['data']);
+      .subscribe(chats => {
+        this.chats = chats['data'];
+        console.log(this.chats);
+      });
   }
 
   back() {
@@ -38,7 +41,7 @@ export class PlaylistPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed' + result);
       this.currentSong = result;
     });
   }

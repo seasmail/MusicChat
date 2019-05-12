@@ -25,6 +25,7 @@ export class DialogPageComponent implements OnInit {
   messageText: string;
   currentUsername = localStorage.getItem('username');
   tracks: Track[];
+  type = 'options';
 
   constructor(
     public dialog: MatDialog,
@@ -114,6 +115,11 @@ export class DialogPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.musicService.getTrackList(this.currentChat)
+        .subscribe(res => {
+          this.tracks = res['data'];
+          console.log(res['data']);
+        });
     });
   }
 }

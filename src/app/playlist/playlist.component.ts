@@ -14,6 +14,9 @@ export class PlaylistComponent implements OnInit {
   @Input() width: number;
   @Input() tracks: Track[];
   @Input() type: string;
+  @Input() selectedChat: Chat;
+
+  chatTracks: Track[];
 
   chat: Chat;
 
@@ -23,20 +26,35 @@ export class PlaylistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.chatService.currentChat
-      .subscribe(chat => {
-        this.chat = chat;
-        console.log(this.chat);
-      });
+    if (this.type === 'exactChat') {
+      this.chat = this.selectedChat;
+    } else {
+      this.chatService.currentChat
+        .subscribe(chat => {
+          this.chat = chat;
+          console.log(this.chat);
+        });
+    }
   }
 
   onSelect(track: Track) {
-    console.log('on select ' + this.type);
-    if (this.type === 'choose') {
-      console.log('choooose');
-      this.musicService.addTrack(track, this.chat)
-        .subscribe(res => console.log(res));
-    }
+    this.musicService.addTrack(track, this.chat)
+      .subscribe(res => {
+        console.log(res);
+        this.musicService.getTrackList(this.chat).subscribe(result => {
+          this.chatTracks = result['data'];
+        });
+      });
+  }
+
+  onDelete(track: Track) {
+    this.musicService.deleteTrack(track, this.chat)
+      .subscribe(res => {
+        this.musicService.getTrackList(this.chat).subscribe(result => {
+          console.log('after delete' + JSON.stringify(result));
+          this.chatTracks = result['data'];
+        });
+      });
   }
 
 

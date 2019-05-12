@@ -1,11 +1,12 @@
-<div class="music-nav">
+<div ngx-auto-scroll  class="music-nav">
   <ul [style.width.px]="width-30" *ngIf="tracks">
     <li class="text-left active-song"
-        *ngFor="let track of tracks" (click)="onSelect(track)">
+        *ngFor="let track of tracks">
       <div class="float-left">
         <p><span>{{track.author}}</span> - {{track.name}}</p>
       </div>
-      <mat-icon>add</mat-icon>
+      <mat-icon *ngIf="type === 'choose'" (click)="onSelect(track)">add</mat-icon>
+      <mat-icon *ngIf="type !== 'choose'" (click)="onDelete(track)">delete_outline</mat-icon>
       <!--<div class="float-right text-right additional-info">3:59</div>-->
     </li>
   </ul>

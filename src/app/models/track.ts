@@ -1,7 +1,7 @@
 import {TrackType} from './trackType';
 
 export class Track {
-  id: number;
+  trackId: number;
   trackType: TrackType;
   author: string;
   name: string;
