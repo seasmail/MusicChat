@@ -1,8 +1,11 @@
 <h1 mat-dialog-title>Choose the audio track</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput placeholder="audio track" [(ngModel)]="data.name">
+    <input matInput #track (keyup)="search(track.value)" placeholder="audio track" [(ngModel)]="data.name">
   </mat-form-field>
+</div>
+<div>
+  <app-playlist [tracks]="tracks" [type]="type"></app-playlist>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>

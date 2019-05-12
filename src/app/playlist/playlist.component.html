@@ -1,28 +1,12 @@
 <div class="music-nav">
   <ul [style.width.px]="width-30">
-    <li class="text-left active-song">
+    <li class="text-left active-song"
+        *ngFor="let track of tracks" (click)="onSelect(track)">
       <div class="float-left">
-        <p><span>Author</span> - Song</p>
+        <p><span>{{track.author}}</span> - {{track.name}}</p>
       </div>
-      <div class="float-right text-right additional-info">3:59</div>
-    </li>
-    <li class="text-left">
-      <div class="float-left">
-        <p><span>Author</span> - Song</p>
-      </div>
-      <div class="float-right text-right additional-info">3:59</div>
-    </li>
-    <li class="text-left">
-      <div class="float-left">
-        <p><span>Author</span> - Song</p>
-      </div>
-      <div class="float-right text-right additional-info">3:59</div>
-    </li>
-    <li class="text-left">
-      <div class="float-left">
-        <p><span>Author</span> - Song</p>
-      </div>
-      <div class="float-right text-right additional-info">3:59</div>
+      <mat-icon>add</mat-icon>
+      <!--<div class="float-right text-right additional-info">3:59</div>-->
     </li>
   </ul>
 </div>

@@ -1,4 +1,4 @@
-<div class="page" *ngIf="currentChat.participants">
+<div class="page" *ngIf="currentChat && currentChat.participants">
   <div class="toolbar-orange">
     <div class="text-left title wrap-45 flex">
       <button [matMenuTriggerFor]="menu">
@@ -52,6 +52,6 @@
     </div>
   </form>
 </div>
-<div class="page" *ngIf="!currentChat.participants">
+<div class="page" *ngIf="!currentChat || !currentChat.participants">
   <app-empty-dialod></app-empty-dialod>
 </div>

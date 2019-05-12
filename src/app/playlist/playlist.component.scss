@@ -10,13 +10,24 @@
   right: 2px;
 }
 
+p {
+  font-size: 14px;
+}
+
 ul {
   padding: 20px 15px;
   height: 65%;
+  display: grid;
   //width: 254px;
   li {
-    padding: 10px 10px 25px;
+    padding: 5px 5px 10px;
     position: relative;
+    cursor: pointer;
+    display: inline-flex;
+
+    mat-icon {
+      display: none;
+    }
   }
 }
 
@@ -39,5 +50,10 @@ li:hover {
 .active-song {
   border-radius: 3px;
   color: $accent-color;
+
+  .float-left {
+    padding-right: 30px;
+  }
 }
+
 

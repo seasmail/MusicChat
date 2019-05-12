@@ -1,5 +1,5 @@
 @import "../../basis.scss";
-
+@import "../../styles.scss";
 
 .mat-dialog-content {
   display: grid;
@@ -12,4 +12,23 @@ mat-icon ~ input {
 
 .mat-dialog-actions {
   justify-content: flex-end;
+}
+.mat-dialog-container {
+  padding: 15px;
+}
+:host /deep/ app-playlist {
+  .music-nav {
+    border: none;
+    top: unset;
+    right: unset;
+  }
+
+  ul {
+    padding: 5px 0;
+  }
+
+  ul li:first-child :after {
+    border-left: none !important;
+    border-right: none !important;
+  }
 }

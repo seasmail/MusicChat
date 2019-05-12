@@ -8,5 +8,5 @@ export class Chat {
   owner: User;
   participants: User[];
   messages: Message[];
-  playlists: Playlist[];
+  trackListId: string;
 }

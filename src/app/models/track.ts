@@ -4,6 +4,6 @@ export class Track {
   id: number;
   trackType: TrackType;
   author: string;
-  trackName: string;
+  name: string;
   url: string;
 }
