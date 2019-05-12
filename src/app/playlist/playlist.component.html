@@ -1,5 +1,5 @@
 <div class="music-nav">
-  <ul [style.width.px]="width-30">
+  <ul [style.width.px]="width-30" *ngIf="tracks">
     <li class="text-left active-song"
         *ngFor="let track of tracks" (click)="onSelect(track)">
       <div class="float-left">

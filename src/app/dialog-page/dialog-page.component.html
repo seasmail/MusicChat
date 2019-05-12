@@ -29,7 +29,8 @@
       <button  (click)="openPlaylist()">
         <mat-icon>playlist_play</mat-icon>
       </button>
-      <app-playlist [width]="music_bar.offsetWidth" *ngIf="isOpen" (click)="openPlaylist()"></app-playlist>
+      <app-playlist [width]="music_bar.offsetWidth" [tracks]="tracks"
+                    *ngIf="isOpen" (click)="openPlaylist()"></app-playlist>
     </div>
   </div>
 

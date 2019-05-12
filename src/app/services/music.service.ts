@@ -28,12 +28,18 @@ export class MusicService {
     });*/
     const params = new HttpParams().set('track_list_id', chat.trackListId);
     const body = (JSON.stringify(track));
-    return this.http.post(`${api}/track_list/track`, {null: body},
+    return this.http.post(`${api}/track_list/track`, {track},
       {headers: httpHeader, params: params});
   }
 
   public deleteTrack(track: Track, chat: Chat) {
      return this.http.request('delete', `${api}/track_list/track`,
-       {body: {'track-list-id': chat.trackListId, 'track_id': track}});
+       {body: {'track_list_id': chat.trackListId, 'track_id': track}});
+  }
+
+  public getTrackList(chat: Chat): Observable<Track[]> {
+    const params = new HttpParams().set('track_list_id', chat.trackListId);
+    console.log('get track list chat id ' + chat.trackListId);
+    return this.http.get<Track[]>(`${api}/track_list/track`, {headers: httpHeader, params: params});
   }
 }

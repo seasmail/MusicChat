@@ -27,8 +27,8 @@ export class ChooseTrackDialogComponent {
   search(value: string) {
     this.musicService.findTrack(value, 1)
       .subscribe(tracks => {
-        this.tracks = tracks;
-        console.log(this.tracks);
+        this.tracks = tracks['data'];
+        console.log(this.tracks['data']);
       });
   }
 

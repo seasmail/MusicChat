@@ -7,6 +7,8 @@ import {RxStompService} from '@stomp/ng2-stompjs';
 import {Subscription} from 'rxjs';
 import {NewChatDialogComponent} from '../dialogs/new-chat-dialog/new-chat-dialog.component';
 import {ChooseTrackDialogComponent} from '../dialogs/choose-track-dialog/choose-track-dialog.component';
+import {MusicService} from '../services/music.service';
+import {Track} from '../models/track';
 
 @Component({
   selector: 'app-dialog-page',
@@ -16,15 +18,18 @@ import {ChooseTrackDialogComponent} from '../dialogs/choose-track-dialog/choose-
 export class DialogPageComponent implements OnInit {
 
   @Input() chat: Chat;
+
   currentChat: Chat;
   isOpen = false;
   currentSubscription: Subscription;
   messageText: string;
   currentUsername = localStorage.getItem('username');
+  tracks: Track[];
 
   constructor(
     public dialog: MatDialog,
     private chatService: ChatService,
+    private musicService: MusicService,
     private rxStompService: RxStompService
   ) {
     this.chatService.getCurrentChats()
@@ -37,6 +42,13 @@ export class DialogPageComponent implements OnInit {
 
   public getCurrentChat() {
     this.chatService.currentChat.subscribe(chat => {
+      if (this.currentChat) {
+        this.musicService.getTrackList(this.currentChat)
+          .subscribe(res => {
+            this.tracks = res['data'];
+            console.log(res['data']);
+          });
+      }
       if (this.currentSubscription) {
         this.currentSubscription.unsubscribe();
       }

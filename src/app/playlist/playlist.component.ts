@@ -34,8 +34,8 @@ export class PlaylistComponent implements OnInit {
     console.log('on select ' + this.type);
     if (this.type === 'choose') {
       console.log('choooose');
-      this.musicService.addTrack(track, this.chat);
-        // .subscribe(res => console.log(res));
+      this.musicService.addTrack(track, this.chat)
+        .subscribe(res => console.log(res));
     }
   }
 
