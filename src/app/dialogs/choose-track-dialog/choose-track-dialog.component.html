@@ -5,7 +5,7 @@
   </mat-form-field>
 </div>
 <div>
-  <app-playlist [tracks]="tracks" [type]="type"></app-playlist>
+  <app-playlist [tracks]="tracks" [type]="type" [player]="data.player"></app-playlist>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>

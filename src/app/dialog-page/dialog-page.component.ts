@@ -5,10 +5,11 @@ import {MatDialog} from '@angular/material';
 import {AddParticipantDialogComponent} from '../dialogs/add-participant-dialog/add-participant-dialog.component';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {Subscription} from 'rxjs';
-import {NewChatDialogComponent} from '../dialogs/new-chat-dialog/new-chat-dialog.component';
 import {ChooseTrackDialogComponent} from '../dialogs/choose-track-dialog/choose-track-dialog.component';
 import {MusicService} from '../services/music.service';
 import {Track} from '../models/track';
+import YandexAudio from 'YandexAudio/src';
+
 
 @Component({
   selector: 'app-dialog-page',
@@ -26,6 +27,10 @@ export class DialogPageComponent implements OnInit {
   currentUsername = localStorage.getItem('username');
   tracks: Track[];
   type = 'options';
+  public player: any;
+  playIcon: boolean;
+  state: any;
+  currentTrack: Track;
 
   constructor(
     public dialog: MatDialog,
@@ -39,15 +44,27 @@ export class DialogPageComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentChat();
+    this.player = new YandexAudio('html5');
+    this.player.initPromise().then(function() {
+      console.log('Аудиоплеер готов к работе.');
+    }, function() {
+      console.error('Не удалось инициализировать аудиоплеер.');
+    });
+    this.player.on(YandexAudio.EVENT_STATE, res => {
+      this.playIcon = res !== YandexAudio.STATE_PLAYING;
+    });
   }
 
   public getCurrentChat() {
     this.chatService.currentChat.subscribe(chat => {
       if (this.currentChat) {
+        console.log(JSON.stringify(this.currentChat));
         this.musicService.getTrackList(this.currentChat)
           .subscribe(res => {
             this.tracks = res['data'];
             console.log(res['data']);
+            this.musicService.changeTrack(this.tracks[0]);
+            this.musicService.currentTrack.subscribe(track => this.currentTrack = track);
           });
       }
       if (this.currentSubscription) {
@@ -94,6 +111,28 @@ export class DialogPageComponent implements OnInit {
     });
   }
 
+  onPlay() {
+    console.log(this.playIcon);
+    this.playIcon = !this.playIcon;
+    this.state = this.player.getState();
+    switch (this.state) {
+      case YandexAudio.STATE_PLAYING:
+        this.player.pause();
+        break;
+      case YandexAudio.STATE_PAUSED:
+        this.player.resume();
+        break;
+      default:
+        this.player.play(this.currentTrack.url);
+        break;
+    }
+  }
+
+  onPrevious(previous: boolean) {
+    if (previous) {
+    }
+  }
+
   leaveChat() {
     this.chatService.removeParticipant(this.currentChat.chatId, localStorage.getItem('username'))
       .subscribe(res => console.log(res));
@@ -111,7 +150,7 @@ export class DialogPageComponent implements OnInit {
   attachment(): void {
     const dialogRef = this.dialog.open(ChooseTrackDialogComponent, {
       width: '400px',
-      data: {name: null}
+      data: {name: null, player: this.player}
     });
 
     dialogRef.afterClosed().subscribe(result => {

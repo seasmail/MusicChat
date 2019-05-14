@@ -18,18 +18,19 @@
     </div>
     <div #music_bar class="music-bar wrap-55 float-right text-right">
       <div class="music-nav">
-        <mat-icon>skip_previous</mat-icon>
-        <mat-icon>pause</mat-icon>
-        <mat-icon class="hidden">play_arrow</mat-icon>
-        <mat-icon>skip_next</mat-icon>
+        <mat-icon (click)="onPrevious(true)">skip_previous</mat-icon>
+        <mat-icon (click)="onPlay()" *ngIf="!playIcon">pause</mat-icon>
+        <mat-icon (click)="onPlay()" *ngIf="playIcon">play_arrow</mat-icon>
+        <mat-icon (click)="onPrevious(false)">skip_next</mat-icon>
       </div>
       <div class="playing-now" (click)="openPlaylist()">
-        Author-Song
+        {{currentTrack.author}} - {{currentTrack.name}}
       </div>
       <button  (click)="openPlaylist()">
         <mat-icon>playlist_play</mat-icon>
       </button>
-      <app-playlist [width]="music_bar.offsetWidth" [tracks]="tracks" [type]="type"
+      <app-playlist [width]="music_bar.offsetWidth" [tracks]="tracks"
+                    [type]="type" [player]="player"
                     *ngIf="isOpen" (click)="openPlaylist()"></app-playlist>
     </div>
   </div>

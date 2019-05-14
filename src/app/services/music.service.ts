@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Track} from '../models/track';
 import {ChatService} from './chats.service';
 import {Chat} from '../models/chat';
@@ -13,8 +13,18 @@ const httpHeader = new HttpHeaders({ 'Content-Type': 'application/json'});
   providedIn: 'root'
 })
 export class MusicService {
+
+  private track: BehaviorSubject<Track>;
+  public currentTrack: Observable<Track>;
   constructor(private http: HttpClient,
-              private chatService: ChatService) { }
+              private chatService: ChatService) {
+    this.track = new BehaviorSubject<Track>(new Track());
+    this.currentTrack = this.track.asObservable();
+  }
+
+  public changeTrack(track: Track) {
+    this.track.next(track);
+  }
 
   public findTrack(search_name: string, page: number): Observable<Track[]> {
     const params = new HttpParams().set('search_name', search_name).set('page', page.toString());

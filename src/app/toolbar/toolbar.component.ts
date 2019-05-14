@@ -3,7 +3,7 @@ import {NewChatDialogComponent} from '../dialogs/new-chat-dialog/new-chat-dialog
 import {MatDialog} from '@angular/material';
 import {ChatService} from '../services/chats.service';
 import {Chat} from '../models/chat';
-import {DialogListPageComponent} from '../dialog-list-page/dialog-list-page.component';
+
 
 
 @Component({
@@ -24,11 +24,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
     console.log('on init toolbar');
     this.getChats();
-    /*audioPlayer.initPromise().then(function() {
-      console.log('Аудиоплеер готов к работе.');
-    }, function() {
-      console.error('Не удалось инициализировать аудиоплеер.');
-    });*/
   }
 
   getChats(): void {
