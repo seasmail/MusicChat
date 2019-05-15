@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit {
 
     console.log(this.loginForm.value);
     this.authService.login(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value);
-    // this.router.navigateByUrl('/chat');
+    this.router.navigateByUrl('/chat');
   }
 
 }

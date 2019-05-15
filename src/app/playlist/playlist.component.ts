@@ -38,20 +38,14 @@ export class PlaylistComponent implements OnInit {
       this.chatService.currentChat
         .subscribe(chat => {
           this.chat = chat;
-          console.log('current chat for playlist ' + this.chat);
+          console.log('current chat for playlist ' + JSON.stringify(this.chat.trackListId));
         });
     }
-
-    this.player.on(YandexAudio.EVENT_ENDED, res => {
-      this.trackIndex++;
-      if (this.trackIndex < this.chatTracks.length) {
-        this.startPlay();
-      }
-    });
   }
 
 
   onSelect(track: Track) {
+    console.log(JSON.stringify(this.chat));
     this.musicService.addTrack(track, this.chat)
       .subscribe(res => {
         this.getTrackList(this.chat);
@@ -80,6 +74,13 @@ export class PlaylistComponent implements OnInit {
         this.player.play(track.url);
         break;
     }
+
+    this.player.on(YandexAudio.EVENT_ENDED, res => {
+      this.trackIndex++;
+      if (this.trackIndex < this.chatTracks.length) {
+        this.startPlay();
+      }
+    });
   }
 
   getTrackList(chat: Chat) {

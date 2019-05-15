@@ -34,7 +34,6 @@ export class AuthService {
   }
 
   public login(username: string, password: string) {
-    this.router.navigateByUrl('/chat');
     return this.http.post<any>(api + 'login', {username, password}, httpOptions).subscribe((data: Response) => {
         this.decoded = jwt_decode(data.headers.get('Authorization'));
         this.userService.setSession(data, this.decoded['sub']);

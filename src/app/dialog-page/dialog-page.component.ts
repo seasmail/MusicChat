@@ -129,7 +129,14 @@ export class DialogPageComponent implements OnInit {
   }
 
   onPrevious(previous: boolean) {
-    if (previous) {
+    if (previous && this.tracks.indexOf(this.currentTrack) !== 0) {
+      this.player.play(this.tracks[this.tracks.indexOf(this.currentTrack) - 1].url);
+      this.musicService.changeTrack(this.tracks[this.tracks.indexOf(this.currentTrack) - 1]);
+    } else {
+      if (this.tracks.indexOf(this.currentTrack) !== this.tracks.length - 1) {
+        this.player.play(this.tracks[this.tracks.indexOf(this.currentTrack) + 1].url);
+        this.musicService.changeTrack(this.tracks[this.tracks.indexOf(this.currentTrack) + 1]);
+      }
     }
   }
 

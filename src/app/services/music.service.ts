@@ -36,6 +36,8 @@ export class MusicService {
     /*Object.keys(track).forEach(function (item) {
       params = params.set(item, track[item]);
     });*/
+    console.log('trackId', chat.trackListId);
+    console.log('chat', chat);
     const params = new HttpParams().set('track_list_id', chat.trackListId);
     const body = (JSON.stringify(track));
     return this.http.post(`${api}/track_list/track`, track,

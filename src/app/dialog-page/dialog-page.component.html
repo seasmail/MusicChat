@@ -6,7 +6,7 @@
       </button>
       <mat-menu #menu="matMenu" xPosition="after">
         <ul class="options">
-          <li><button (click)="addPerson()">Add person</button> </li>
+          <li *ngIf="currentChat.owner.username === currentUsername"><button (click)="addPerson()">Add person</button> </li>
           <li *ngIf="currentChat.owner.username === currentUsername"><button (click)="removePerson()">Remove person</button></li>
           <li><button (click)="leaveChat()">Leave chat</button></li>
         </ul>
@@ -24,7 +24,9 @@
         <mat-icon (click)="onPrevious(false)">skip_next</mat-icon>
       </div>
       <div class="playing-now" (click)="openPlaylist()">
-        {{currentTrack.author}} - {{currentTrack.name}}
+        <div *ngIf="currentTrack">
+          {{currentTrack.author}} - {{currentTrack.name}}
+        </div>
       </div>
       <button  (click)="openPlaylist()">
         <mat-icon>playlist_play</mat-icon>

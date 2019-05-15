@@ -21,6 +21,8 @@ mat-icon ~ input {
     border: none;
     top: unset;
     right: unset;
+    overflow: auto;
+    max-height: 500px;
   }
 
   ul {
