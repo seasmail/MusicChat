@@ -37,6 +37,7 @@ export class AuthService {
     return this.http.post<any>(api + 'login', {username, password}, httpOptions).subscribe((data: Response) => {
         this.decoded = jwt_decode(data.headers.get('Authorization'));
         this.userService.setSession(data, this.decoded['sub']);
+        this.router.navigate(['/chat']);
       }
     );
   }
@@ -48,7 +49,7 @@ export class AuthService {
   public logout() {
     this.currentUserSubject.next(null);
     localStorage.clear();
-    this.router.navigateByUrl('/auth/login');
+    this.router.navigateByUrl('/auth');
   }
 
   public signup(username: string, password: string) {
