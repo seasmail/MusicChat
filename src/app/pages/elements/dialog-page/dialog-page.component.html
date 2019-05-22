@@ -7,7 +7,7 @@
       <mat-menu #menu="matMenu" xPosition="after">
         <ul class="options">
           <li *ngIf="currentChat.owner.username === currentUsername"><button (click)="addPerson()">Add person</button> </li>
-          <li *ngIf="currentChat.owner.username === currentUsername"><button (click)="removePerson()">Remove person</button></li>
+          <li *ngIf="currentChat.owner.username === currentUsername && currentChat.participants.length!=1"><button (click)="removePerson()">Remove person</button></li>
           <li><button (click)="leaveChat()">Leave chat</button></li>
         </ul>
       </mat-menu>
