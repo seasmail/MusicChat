@@ -1,6 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ChatService} from '../../../services/chats.service';
 import {Chat} from '../../../models/chat';
+import {Router, RoutesRecognized} from '@angular/router';
+import {Location} from '@angular/common';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/pairwise';
+
 
 @Component({
   selector: 'app-dialog-list-page',
@@ -11,7 +16,15 @@ export class DialogListPageComponent implements OnInit {
   @Input() chats: Chat[];
   public selectedChat: Chat;
   constructor(
-    private chatService: ChatService) {
+    private chatService: ChatService,
+    private router: Router,
+    private location: Location) {
+    this.router.events
+      .filter(e => e instanceof RoutesRecognized)
+      .pairwise()
+      .subscribe((event: any[]) => {
+        console.log(' after  ' + event[0].urlAfterRedirects);
+      });
   }
 
   ngOnInit() {

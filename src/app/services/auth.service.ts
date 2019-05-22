@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import * as jwt_decode from 'jwt-decode';
+
 import {UserService} from './user.service';
 import {Router} from '@angular/router';
 
@@ -19,7 +19,7 @@ const api = 'http://playmaker.gq:8080/auth/';
 export class AuthService {
   public currentUser: Observable<string>;
   public currentUserSubject: BehaviorSubject<string>;
-  public decoded;
+
 
   constructor(
     private http: HttpClient,
@@ -34,12 +34,7 @@ export class AuthService {
   }
 
   public login(username: string, password: string) {
-    return this.http.post<any>(api + 'login', {username, password}, httpOptions).subscribe((data: Response) => {
-        this.decoded = jwt_decode(data.headers.get('Authorization'));
-        this.userService.setSession(data, this.decoded['sub']);
-        this.router.navigate(['/chat']);
-      }
-    );
+    return this.http.post<any>(api + 'login', {username, password}, httpOptions).toPromise();
   }
 
   public isLogged() {
