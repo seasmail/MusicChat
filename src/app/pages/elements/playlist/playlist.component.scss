@@ -1,0 +1,65 @@
+@import "../../../../basis";
+
+.music-nav {
+  background-color: white;
+  color: $msg-color;
+  //position: relative;
+  z-index: 1;
+  border: 1px solid $dark-divider-color;
+  top: 44px;
+  right: 2px;
+}
+
+p {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+ul {
+  padding: 20px 15px;
+  height: 65%;
+  display: grid;
+  //width: 254px;
+  li {
+    padding: 5px 5px 10px;
+    position: relative;
+    display: inline-flex;
+    width: inherit;
+    justify-content: flex-end;
+    margin: auto 0;
+  }
+}
+
+ul li:first-child :after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -31px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 11px solid white !important;
+}
+li:hover {
+  //color: $accent-color;
+  background-color: $light-grey;
+
+}
+.active-song {
+  border-radius: 3px;
+  color: $accent-color;
+}
+
+.float-left {
+  width: -moz-available;
+  width: -webkit-fill-available;
+  padding-right: 30px;
+}
+
+mat-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+

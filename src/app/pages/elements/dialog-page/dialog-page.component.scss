@@ -1,0 +1,114 @@
+@import "../../../../basis";
+@import "../../../../styles";
+.page {
+  width: $right-side-width;
+  background-color: $light-grey;
+}
+
+p {
+  color: white;
+}
+
+.toolbar-orange .additional-info {
+  color: $addit-light-orange;
+  padding-top: 2px;
+}
+
+.music-bar {
+  padding: 20px 20px 20px 0;
+  display: flex;
+}
+
+.music-nav {
+  display: flex;
+  float: left;
+}
+
+.title {
+  padding-left: 20px;
+}
+
+ul {
+  margin: 30px;
+  height: 72%;
+  li {
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid $dark-divider-color;
+  }
+
+  li.chat-message {
+    padding-left: 68px;
+  }
+}
+
+.options {
+  margin: 10px;
+  li {
+    padding: 5px;
+    color: $msg-color;
+  }
+  li button:hover {
+    color: $accent-color;
+  }
+}
+
+
+.event-message {
+  color: $background-color;
+  text-align: center;
+  p {
+    color: $msg-color;
+  }
+  span {
+    font-weight: bold;
+  }
+}
+
+.form-group {
+  margin: 15px 30px;
+  display: flex;
+}
+
+input {
+  width: 90%;
+  height: 20px;
+  padding: 10px 10px 10px 55px;
+  border: none;
+}
+
+mat-icon {
+  font-size: 30px;
+  color: $accent-color;
+}
+
+.music-bar mat-icon {
+  color: white;
+}
+
+.title mat-icon {
+  color: white;
+}
+
+:host /deep/ app-playlist {
+  ul {
+    height: -webkit-fill-available;
+  }
+}
+
+.playing-now {
+  width: 150px;
+  margin: auto auto 0 10px;
+  text-align: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.list-msg {
+  overflow-y: scroll;
+}
+.absolute {
+  position: absolute !important;
+}
+
+

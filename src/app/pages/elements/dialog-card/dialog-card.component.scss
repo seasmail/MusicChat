@@ -1,0 +1,38 @@
+@import "../../../../basis";
+
+
+
+.card__pre-dialog_name {
+  padding-bottom: 10px;
+}
+
+.card__pre-dialog_message {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+p {
+  color: $msg-color;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 16px;
+}
+
+.wrap {
+  width: 83%;
+}
+
+.card__pre-dialog {
+  margin-right: 30px;
+}
+
+.active {
+  background-color: $light-orange;
+}
+
+.card {
+  width: 300px;
+}

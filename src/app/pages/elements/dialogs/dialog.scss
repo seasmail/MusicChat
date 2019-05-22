@@ -1,0 +1,36 @@
+@import "../../../../basis";
+@import "../../../../styles";
+
+.mat-dialog-content {
+  display: grid;
+  overflow: hidden;
+}
+
+mat-icon ~ input {
+  padding-left: 26px;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
+.mat-dialog-container {
+  padding: 15px;
+}
+:host /deep/ app-playlist {
+  .music-nav {
+    border: none;
+    top: unset;
+    right: unset;
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  ul {
+    padding: 5px 0;
+  }
+
+  ul li:first-child :after {
+    border-left: none !important;
+    border-right: none !important;
+  }
+}

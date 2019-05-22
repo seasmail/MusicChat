@@ -1,0 +1,23 @@
+@import "../../../../basis";
+
+
+
+mat-icon {
+  padding: 20px 25px;
+  font-size: 30px;
+}
+
+mat-drawer {
+  width: 100%;
+  background-color: $background-color;
+  height: 100vh;
+}
+
+button {
+  background: none;
+  color: white;
+  padding: 0;
+}
+.page {
+  border-right: 1px solid $dark-divider-color;
+}
