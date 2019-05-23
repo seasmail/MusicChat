@@ -65,6 +65,9 @@ export class DialogPageComponent implements OnInit {
             console.log(res['data']);
             this.musicService.changeTrack(this.tracks[0]);
             this.musicService.currentTrack.subscribe(track => this.currentTrack = track);
+            if (this.tracks.length === 0) {
+              this.isOpen = true;
+            }
           });
       }
       if (this.currentSubscription) {
